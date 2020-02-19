@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install dependency package
-yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel make
+yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel gcc make tar
 
 # download pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
