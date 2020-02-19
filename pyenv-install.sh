@@ -9,7 +9,7 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 # set environment parameters
 echo "export PYENV_HOME=$HOME/.pyenv" >> /etc/profile
-source /etc/profile
+source /etc/profile #IMPOTANT! for next step 
 echo "export PATH=$PATH:$PYENV_HOME/bin" >> /etc/profile
 echo 'eval "$(pyenv init -)"' >> /etc/profile
 source /etc/profile
