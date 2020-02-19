@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install openssh-server
-yum install openssh-server
+yum install -y openssh-server
 
 ## change the port to 22 at /etc/ssh/sshd_config ##
 # vi /etc/ssh/sshd_config
