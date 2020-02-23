@@ -2,11 +2,12 @@
 # VERSION 1
 # Author: wade
 
-FROM gradle
+FROM centos
 
 MAINTAINER wade wadechen@outlook.com
 
-RUN git clone https://github.com/wadeee/oftenshell.git ~/oftenshell
+RUN dnf install -y git\
+    && git clone https://github.com/wadeee/oftenshell.git ~/oftenshell
 
-CMD bash\
+CMD /sbin/init\
     && cd ~/oftenshell
