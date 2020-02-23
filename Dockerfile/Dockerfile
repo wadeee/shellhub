@@ -9,4 +9,4 @@ MAINTAINER wade wadechen@outlook.com
 RUN git clone https://github.com/wadeee/oftenshell.git ~/oftenshell
 
 CMD bash\
-    && cd ~/luckinx
+    && cd ~/oftenshell
