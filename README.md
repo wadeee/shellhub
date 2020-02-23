@@ -14,8 +14,14 @@ Run the shell easily when the system remounted.
 + 生成并运行container
 
     ```bash
-    docker run -itd --name=oftenshell oftenshell
-    docker exec -it -w="~/oftenshell" oftenshell bash
+    docker run -itd --name=oftenshell --privileged oftenshell
+    docker exec -it -w="/root/oftenshell" oftenshell bash
+    ```
+
++ 使用完后删除image和container
+
+    ```bash
+    docker stop oftenshell && docker rm oftenshell && docker image rm oftenshell
     ```
 
 ## Install the git and clone
