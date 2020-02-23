@@ -1,6 +1,6 @@
 # OFTENSHELL
 
-Run the shell easily when the system renewed.
+Run the shell easily when the system remounted.
 
 ## Install the git and clone
 
