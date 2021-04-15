@@ -13,3 +13,4 @@ systemctl start mysqld
 ## enable root remote login ##
 # use mysql;
 # update user set host='%' where user ='root';
+# flush privileges;
