@@ -12,5 +12,6 @@ systemctl start mysqld
 # mysqladmin -u root -p password 'new password'
 ## enable root remote login ##
 # use mysql;
+# select host, user, authentication_string, plugin from user;
 # update user set host='%' where user ='root';
 # flush privileges;
