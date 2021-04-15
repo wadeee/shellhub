@@ -15,7 +15,8 @@ Run the shell easily when the system remounted.
 
     ```bash
     docker run -itd --name=oftenshell --privileged oftenshell
-    docker exec -it -w="/root/oftenshell" oftenshell bash
+    docker exec -it oftenshell bash
+    cd /root/oftenshel
     ```
 
 + 使用完后删除image和container
