@@ -2,3 +2,6 @@
 
 ## install nodejs ##
 yum install -y nodejs
+
+## install yarn ##
+npm install -g yarn
