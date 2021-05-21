@@ -8,7 +8,11 @@ Run the shell easily when the system remounted.
 
     ```bash
     docker build -t oftenshell ./Dockerfile
-    docker images
+    docker build --no-cache -t oftenshell ./Dockerfile ##修改后使用no-cache参数生成
+    ```
+
+    ```bash
+    docker images ##查看镜像
     ```
 
 + 生成并运行container
@@ -27,7 +31,7 @@ Run the shell easily when the system remounted.
 
 ## Install the git and clone
 
-```shell script
+```bash
 dnf install -y git
 git clone https://github.com/wadeee/oftenshell.git ~/oftenshell
 # git clone git@github.com:wadeee/oftenshell.git ~/oftenshell
