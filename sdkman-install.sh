@@ -7,9 +7,9 @@ dnf install -y unzip
 
 ## install SDK man ##
 curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+# source "$HOME/.sdkman/bin/sdkman-init.sh"
 # echo 'source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ~/.zshrc
 
 # sdk version
 
-reboot
+# reboot
