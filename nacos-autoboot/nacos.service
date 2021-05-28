@@ -1,0 +1,7 @@
+[Unit]
+Description=namegenerator
+[Service]
+TimeoutStartSec=0
+ExecStart=/bin/sh /root/nacos/distribution/bin/startup.sh -m standalone
+[Install]
+WantedBy=multi-user.target
