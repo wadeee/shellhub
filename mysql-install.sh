@@ -15,3 +15,7 @@ systemctl start mysqld
 # select host, user, authentication_string, plugin from user;
 # update user set host='%' where user ='root';
 # flush privileges;
+
+## add user
+# create user ry@'%' identified by 'cellxiot654321';
+# grant all privileges on ry-vue.* to ry@'%';
