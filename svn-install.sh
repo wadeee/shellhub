@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yum install subversion
+yum -y install subversion
