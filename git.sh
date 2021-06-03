@@ -2,6 +2,8 @@
 
 ## git command ##
 
+git stash list
+
 git stash -m 'message'
 
 git stash pop
