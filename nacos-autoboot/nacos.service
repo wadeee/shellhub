@@ -1,5 +1,5 @@
 [Unit]
-Description=namegenerator
+Description=nacos
 [Service]
 TimeoutStartSec=0
 ExecStart=/bin/sh /root/nacos/distribution/target/nacos-server-2.0.2-SNAPSHOT/nacos/bin/startup.sh -m standalone

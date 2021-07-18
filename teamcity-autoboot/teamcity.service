@@ -1,0 +1,8 @@
+[Unit]
+Description=teamcity
+[Service]
+TimeoutStartSec=0
+ExecStart=/bin/sh /root/TeamCity/bin/teamcity-server.sh start
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
