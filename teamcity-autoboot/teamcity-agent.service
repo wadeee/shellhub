@@ -1,0 +1,8 @@
+[Unit]
+Description=teamcity-agent
+[Service]
+TimeoutStartSec=0
+ExecStart=/bin/sh /var/local/buildagent/bin/agent.sh start
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
