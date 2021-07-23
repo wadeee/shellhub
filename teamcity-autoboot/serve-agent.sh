@@ -1,8 +1,6 @@
 #!/bin/sh
 
 ## build agent
-## docker pull jetbrains/teamcity-agent
-## chcon -Rt svirt_sandbox_file_t /root/TeamCity/conf
 
 ## http://office.cellx.com.cn:36019/update/buildAgentFull.zip
 ## unzip buildAgentFull.zip -d /var/local/buildagent
