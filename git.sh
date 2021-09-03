@@ -15,6 +15,7 @@ git reset HEAD^
 git reset --hard HEAD~2
 git push -f
 git pull -f origin main:main
+git push origin --delete dev_branch
 
 ## git serve ##
 git init --bare cellxiot.git
