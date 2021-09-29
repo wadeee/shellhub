@@ -19,10 +19,11 @@ git push origin --delete dev_branch
 
 ## git serve ##
 git init --bare cellxiot.git
-chown -R git:git cellxiot.git
 adduser git
+chown -R git:git cellxiot.git
 ## vi /etc/passwd ## git:x:1001:1001:,,,:/home/git:/bin/bash => git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 ## cat /etc/passwd | grep git
 chsh git -s $(which git-shell)
+# chsh git -s $(which bash)
 ## git clone git@server:/srv/cellxiot.git
 ## git clone ssh://git@office.cellx.com.cn:36010/srv/cellxiot.git
