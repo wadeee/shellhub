@@ -8,6 +8,9 @@
 ## initialize ## remove the /data folder before initialize
 mysqld --initialize --console
 
+## registry mysql service
+mysqld --install
+
 ## start mysql server
 net start mysql
 
