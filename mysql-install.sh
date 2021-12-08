@@ -9,7 +9,7 @@ systemctl start mysqld
 
 ## Myslq8 ##
 ## update password ##
-# mysqladmin -u root -p password 'new password'
+# alter user user() identified by "password";
 ## enable root remote login ##
 # use mysql;
 # select host, user, authentication_string, plugin from user;

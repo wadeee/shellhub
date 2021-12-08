@@ -18,10 +18,10 @@ net start mysql
 ## net stop mysql
 
 ## change root's password
-alter user user() identified by "password";
+# alter user user() identified by "password";
 
 ## grant BACKUP_ADMIN
-grant BACKUP_ADMIN on *.* to 'root'@'%';
+# grant BACKUP_ADMIN on *.* to 'root'@'%';
 
 ## flush PRIVILEGES
-FLUSH PRIVILEGES;
+# FLUSH PRIVILEGES;
