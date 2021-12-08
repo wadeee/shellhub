@@ -7,7 +7,8 @@ systemctl enable mysqld
 ## run the mysql server ##
 systemctl start mysqld
 
-## Myslq8 ##
+## get init password
+# grep 'temporary password' /var/log/mysqld.log
 ## update password ##
 # alter user user() identified by "password";
 ## enable root remote login ##
