@@ -14,3 +14,9 @@ rpm -qa
 
 ## uninstall rpm
 rpm -e
+
+## epel
+yum -y install epel-release
+
+## unzip
+unzip a.zip -d /root/temp
