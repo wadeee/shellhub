@@ -2,11 +2,10 @@
 # VERSION 1
 # Author: wade
 
-FROM centos
+FROM centos:latest
 
 MAINTAINER wade wadechen@outlook.com
 
-RUN dnf install -y git\
-    && git clone https://github.com/wadeee/oftenshell.git ~/oftenshell
+COPY docker-compose.yml /root/temp/
 
-CMD ["/sbin/init"]
+CMD ["/bin/bash"]

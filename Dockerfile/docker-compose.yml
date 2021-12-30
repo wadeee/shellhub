@@ -1,0 +1,6 @@
+version: '3'
+services:
+  wade:
+    build: .
+    image: "wade:latest"
+    tty: true

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 vm_path="C:/Users/wade/Documents/Virtual Machines/"
-origin_vm="CentOS 8.5 server"
+origin_vm="CentOS 8.5.2111"
 target_vm="$1"
 
 mkdir -p "${vm_path}${target_vm}"
