@@ -1,0 +1,7 @@
+[Unit]
+Description=sentinel
+After=network.target
+[Service]
+ExecStart=java -Dserver.port=8718 -Dcsp.sentinel.dashboard.server=192.168.23.128:8718 -Dproject.name=sentinel-dashboard -jar /root/jars/sentinel-dashboard-1.8.5.jar
+[Install]
+WantedBy=multi-user.target

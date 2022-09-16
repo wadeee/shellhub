@@ -1,0 +1,9 @@
+[Unit]
+Description=nacos
+After=network.target
+[Service]
+Type=forking
+ExecStart=/bin/sh /root/nacos/bin/startup.sh -m standalone
+ExecStop=/bin/sh /root/nacos/bin/shutdown.sh
+[Install]
+WantedBy=multi-user.target
