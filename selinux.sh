@@ -16,11 +16,14 @@ semanage port -a -t http_port_t -p udp 36019
 ## 启用网络访问配置
 setsebool -P httpd_can_network_connect 1
 
+## 获得SELINUX配置参数
+getsebool -a | grep httpd_can_network_connect
+
 ## SELinux status
 sestatus -v
 
-##设置SELinux 成为permissive模式
-# setenforce 0
-
-##设置SELinux 成为enforce模式
-# setenforce 1
+## SELINUX状态设置
+vi /etc/selinux/config
+## SELINUX=enforcing   ## 强制模式（默认）
+## SELINUX=permissive  ## 宽容模式
+## SELINUX=disabled    ## 禁用
