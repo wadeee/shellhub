@@ -11,11 +11,13 @@ fdisk /dev/sdb
 ## delete: d w
 
 ## disk format
-mkfs.ext4 /dev/sdb1
+mkfs.xfs /dev/sdb1
+# mkfs.ext4 /dev/sdb1
 
 ## auto disk mount
 vi /etc/fstab
 ## add the next line
+## /dev/sdb1 /mnt/data xfs defaults 0 0
 ## /dev/sdb1 /mnt/data ext4 defaults 0 0
 
 ## disk mount
