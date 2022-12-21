@@ -22,6 +22,15 @@ vi /etc/fstab
 mkdir /mnt/data
 mount /dev/sdb1 /mnt/data
 
+## disk unmount
+umount /dev/sdb1
+
 ## make symbolic link
 mkdir -p /mnt/data/temp
+ln -s /mnt/data/temp /root/temp
+
+## copy and make symbolic link
+rm -rf /mnt/data/temp/*
+cp -r /root/temp/* /mnt/data/temp
+rm -rf /root/temp
 ln -s /mnt/data/temp /root/temp
