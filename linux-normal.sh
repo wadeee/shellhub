@@ -39,7 +39,7 @@ dnf remove -y nginx
 
 ## zip
 cd /root/temp
-zip -r /root/temp.zip *
+zip -r /root/temp.zip ./*
 
 ## unzip
 unzip /root/temp.zip -d /root/temp1
