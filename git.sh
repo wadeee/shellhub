@@ -6,6 +6,7 @@ git stash list
 git stash -m 'message'
 git stash pop
 git stash pop stash@{1}
+git stash clear
 git checkout -b dev_branch
 git checkout ds89fsu89
 git checkout -f
@@ -20,9 +21,8 @@ git push origin --delete dev_branch
 ## git serve ##
 git init --bare cellxiot.git
 adduser git
+passwd git
 chown -R git:git cellxiot.git
-## vi /etc/passwd ## git:x:1001:1001:,,,:/home/git:/bin/bash => git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
-## cat /etc/passwd | grep git
 chsh git -s $(which git-shell)
 # chsh git -s $(which bash)
 ## git clone git@server:/srv/cellxiot.git

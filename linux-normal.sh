@@ -1,7 +1,13 @@
 #!/bin/sh
 
-## copy file
+## new a file
+touch a.txt
+vi a.txt
+
+## print file
 cat a.txt
+
+## copy file
 cat a.txt > b.txt
 
 ## move file
@@ -38,7 +44,7 @@ dnf list nginx ## list nginx
 dnf remove -y nginx
 
 ## zip
-cd /root/temp
+cd /root/temp || exit
 zip -r /root/temp.zip ./*
 
 ## unzip
@@ -46,3 +52,23 @@ unzip /root/temp.zip -d /root/temp1
 
 ## chmod all runnable
 chmod +x ./*.sh
+
+## timedate
+timedatectl status
+timedatectl set-timezone Asia/Shanghai
+
+
+## add user
+adduser git
+useradd git
+
+## remove user
+userdel git
+userdel -r git  ## remove with the files
+
+## change password
+passwd git
+
+## change authorization
+chsh git -s $(which git-shell)
+chsh git -s $(which bash)
