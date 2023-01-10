@@ -72,3 +72,10 @@ passwd git
 ## change authorization
 chsh git -s $(which git-shell)
 chsh git -s $(which bash)
+
+## cron
+vi /etc/crontab ## config example: 10 18 * * * root systemctl start nginx && crontab -r
+crontab /etc/crontab ## start tasks
+crontab -l ## show list
+crontab -r ## remove tasks
+crontab -e ## edit tasks
