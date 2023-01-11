@@ -75,7 +75,9 @@ chsh git -s $(which bash)
 
 ## cron
 vi /etc/crontab ## config example: 10 18 * * * root systemctl start nginx && crontab -r
-crontab /etc/crontab ## start tasks
+systemctl reload crond ## reload /etc/crontab
+## crontab /etc/crontab ##
 crontab -l ## show list
 crontab -r ## remove tasks
 crontab -e ## edit tasks
+cat /var/log/cron ## log
