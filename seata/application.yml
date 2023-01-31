@@ -52,7 +52,7 @@ seata:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/ry-seata?rewriteBatchedStatements=true
       user: root
-      password: root
+      password: password
       min-conn: 5
       max-conn: 100
       global-table: global_table
