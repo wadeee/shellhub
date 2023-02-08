@@ -81,3 +81,8 @@ crontab -l ## show list
 crontab -r ## remove tasks
 crontab -e ## edit tasks
 cat /var/log/cron ## log
+
+## find
+find . -name "*.c"
+find / -name "*.c"
+find . -type f ## show all documents
