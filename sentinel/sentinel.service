@@ -2,6 +2,6 @@
 Description=sentinel
 After=network.target
 [Service]
-ExecStart=java -Dserver.port=8718 -Dcsp.sentinel.dashboard.server=localhost:8718 -Dproject.name=sentinel-dashboard -Dlogging.file.path=/var/log/sentinel -Dlogging.file.name=/var/log/sentinel/sentinel-dashboard.log -Dcsp.sentinel.log.dir=/var/log/sentinel/ -jar /root/jars/sentinel-dashboard-1.8.5.jar
+ExecStart=java -Dserver.port=8718 -Dcsp.sentinel.dashboard.server=localhost:8718 -Dproject.name=sentinel-dashboard -Dlogging.file.name=/var/log/sentinel/sentinel-dashboard.log -Dcsp.sentinel.log.dir=/var/log/sentinel/ -jar /root/jars/sentinel-dashboard-1.8.5.jar
 [Install]
 WantedBy=multi-user.target
