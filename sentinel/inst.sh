@@ -25,7 +25,7 @@ done
 
 ## upload jar ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "mkdir /root/jars"
-scp -P "$remote_port" -i ${ssh_key} ./sentinel-dashboard-1.8.5.jar "$remote_user"@"$remote_host":/root/jars/
+scp -P "$remote_port" -i ${ssh_key} ./sentinel-dashboard-1.8.6.jar "$remote_user"@"$remote_host":/root/jars/
 
 ## firewall
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"

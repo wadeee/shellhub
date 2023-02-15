@@ -25,10 +25,10 @@ done
 
 ## install seata ##
 ## install seata online ##
-#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root && wget https://github.com/seata/seata/releases/download/v1.5.2/seata-server-1.5.2.zip && unzip seata-server-1.5.2.zip"
+#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root && wget https://github.com/seata/seata/releases/download/v1.5.2/seata-server-1.6.1.zip && unzip seata-server-1.6.1.zip"
 ## install seata local ##
-scp -P "$remote_port" -i ${ssh_key} ./seata-server-1.5.2.zip "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "rm -rf /root/seata && cd /root && unzip -o seata-server-1.5.2.zip"
+scp -P "$remote_port" -i ${ssh_key} ./seata-server-1.6.1.zip "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "rm -rf /root/seata && cd /root && unzip -o seata-server-1.6.1.zip"
 
 ## firewall
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
