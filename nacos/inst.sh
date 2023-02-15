@@ -25,10 +25,10 @@ done
 
 ## install nacos ##
 ## install nacos online ##
-#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root && wget https://github.com/alibaba/nacos/releases/download/2.1.1/nacos-server-2.1.1.zip && unzip nacos-server-2.1.1.zip"
+#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root && wget https://github.com/alibaba/nacos/releases/download/2.2.0/nacos-server-2.2.0.zip && unzip nacos-server-2.2.0.zip"
 ## install nacos local ##
-scp -P "$remote_port" -i ${ssh_key} ./nacos-server-2.1.1.zip "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "rm -rf /root/nacos && cd /root && unzip -o nacos-server-2.1.1.zip"
+scp -P "$remote_port" -i ${ssh_key} ./nacos-server-2.2.0.zip "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "rm -rf /root/nacos && cd /root && unzip -o nacos-server-2.2.0.zip"
 
 ## firewall
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
