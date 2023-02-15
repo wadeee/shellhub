@@ -41,7 +41,7 @@ ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "firewall-cmd 
 ## add nacos config ## ## only first time need to run ##
 #scp -P "$remote_port" -i ${ssh_key} ./config.txt "$remote_user"@"$remote_host":/root/seata/
 #scp -P "$remote_port" -i ${ssh_key} ./nacos-config.sh "$remote_user"@"$remote_host":/root/seata/conf/
-#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root/seata/conf/ && sh nacos-config.sh 127.0.0.1"
+#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "cd /root/seata/conf/ && sh nacos-config.sh localhost"
 
 ## upload config ##
 scp -P "$remote_port" -i ${ssh_key} ./application.yml "$remote_user"@"$remote_host":/root/seata/conf/
