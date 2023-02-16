@@ -1,4 +1,6 @@
 service.vgroupMapping.ruoyi-system-group=default
+service.vgroupMapping.cellx-base-group=default
+service.vgroupMapping.cellx-custom-group=default
 store.mode=db
 store.db.datasource=druid
 store.db.dbType=mysql
