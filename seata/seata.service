@@ -3,8 +3,9 @@ Description=seata
 After=network.target
 [Service]
 Type=forking
+Restart=always
 WorkingDirectory=/root/seata/bin/
-ExecStartPre=/bin/sleep 45
+ExecStartPre=/bin/sleep 60
 ExecStart=/bin/sh seata-server.sh
 [Install]
 WantedBy=multi-user.target
