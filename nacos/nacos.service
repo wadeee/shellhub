@@ -3,7 +3,6 @@ Description=nacos
 After=network.target
 [Service]
 Type=forking
-ExecStart=/bin/java -Djava.ext.dirs=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b01-0.3.ea.el8.x86_64/jre/lib/ext:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b01-0.3.ea.el8.x86_64/lib/ext -Xms512m -Xmx512m -Xmn256m -Dnacos.standalone=true -Dnacos.member.list= -Xloggc:/root/nacos/logs/nacos_gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M -Dloader.path=/root/nacos/plugins,/root/nacos/plugins/health,/root/nacos/plugins/cmdb,/root/nacos/plugins/selector -Dnacos.home=/root/nacos -jar /root/nacos/target/nacos-server.jar --spring.config.additional-location=file:/root/nacos/conf/ --logging.config=/root/nacos/conf/nacos-logback.xml --server.max-http-header-size=524288 nacos.nacos
-ExecStop=/bin/sh /root/nacos/bin/shutdown.sh
+ExecStart=/bin/java -Xms512m -Xmx512m -Xmn256m -Dnacos.standalone=true -Dnacos.member.list= -Xloggc:/var/log/nacos/nacos_gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M -Dloader.path=/root/nacos/plugins,/root/nacos/plugins/health,/root/nacos/plugins/cmdb,/root/nacos/plugins/selector -Dnacos.home=/root/nacos -jar /root/nacos/target/nacos-server.jar --spring.config.additional-location=file:/root/nacos/conf/ --logging.config=/var/log/nacos/nacos-logback.xml --server.max-http-header-size=524288 nacos.nacos
 [Install]
 WantedBy=multi-user.target
