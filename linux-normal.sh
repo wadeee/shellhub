@@ -86,3 +86,13 @@ cat /var/log/cron ## log
 find . -name "*.c"
 find / -name "*.c"
 find . -type f ## show all documents
+
+## top
+top
+# press M ## sort by memory
+# press P ## sort by CPU
+
+## see the service
+ps aux | grep 1213
+kill 1213
+
