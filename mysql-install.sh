@@ -16,6 +16,9 @@ systemctl start mysqld
 # update user set host='localhost' where user ='root'; ## disable root remote login
 # flush privileges;
 
+## update password & enable root remote login ##
+# alter user user() identified by "password"; use mysql; update user set host='%' where user ='root'; flush privileges;
+
 ## add user
 # create user ry@'%' identified by 'cellxiot654321';
 # grant all privileges on ry-vue.* to ry@'%';

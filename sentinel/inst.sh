@@ -23,6 +23,8 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## download jar ##
+# ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "mkdir /root/jars && cd /root/jars && wget https://github.com/alibaba/Sentinel/releases/download/1.8.6/sentinel-dashboard-1.8.6.jar"
 ## upload jar ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "mkdir /root/jars"
 scp -P "$remote_port" -i ${ssh_key} ./sentinel-dashboard-1.8.6.jar "$remote_user"@"$remote_host":/root/jars/
