@@ -96,3 +96,8 @@ top
 ps aux | grep 1213
 kill 1213
 
+## set variable
+a=hello
+a=$((1+1))
+a=`date`
+echo $a
