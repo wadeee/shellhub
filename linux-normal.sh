@@ -98,6 +98,10 @@ kill 1213
 
 ## set variable
 a=hello
-a=$((1+1))
-a=`date`
 echo $a
+a=$((1+1))
+echo $a
+a=$(date)
+echo "$a"
+a=$(ls)
+echo "$a"
