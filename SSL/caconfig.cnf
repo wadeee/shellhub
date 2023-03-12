@@ -1,0 +1,19 @@
+[ req ]
+distinguished_name = req_distinguished_name
+x509_extensions = root_ca
+
+[ req_distinguished_name ]
+countryName = CN
+countryName_min = 2
+countryName_max = 2
+stateOrProvinceName = HN
+localityName = HN
+0.organizationName = wade
+organizationalUnitName = technology
+commonName = wade
+commonName_max = 64
+emailAddress = wadechen@outlook.com
+emailAddress_max = 64
+
+[ root_ca ]
+basicConstraints = critical, CA:true

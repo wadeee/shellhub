@@ -1,0 +1,7 @@
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth
+
+[alt_names]
+DNS.1 = jiuyanguoxue.wade.org.cn
+DNS.2 = *.wade.org.cn
+IP.1 = 47.105.99.75
