@@ -1,0 +1,15 @@
+#
+# server.cnf
+#
+
+[ req ]
+prompt                  = no
+distinguished_name      = server_distinguished_name
+
+[ server_distinguished_name ]
+commonName              = localhost         # 服务器域名，由于在本地测试，设为 localhost 即可
+stateOrProvinceName     = JS                # 服务器所在省份
+countryName             = CN                # 服务器所在国家（仅限2字符）
+emailAddress            = wadechen@outlook.com    # 邮箱
+organizationName        = cellx              # 组织名
+organizationalUnitName  = cellx                # 单位名
