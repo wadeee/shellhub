@@ -1,8 +1,9 @@
 [Unit]
 Description=teamcity
+After=network.target
 [Service]
-TimeoutStartSec=0
+Type=forking
 ExecStart=/bin/sh /root/TeamCity/bin/teamcity-server.sh start
-RemainAfterExit=yes
+ExecStop=/bin/sh /root/TeamCity/bin/teamcity-server.sh stop
 [Install]
 WantedBy=multi-user.target
