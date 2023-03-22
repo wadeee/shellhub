@@ -38,11 +38,8 @@ ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "firewall-cmd 
 
 ## upload config ##
 scp -P "$remote_port" -i ${ssh_key} ./teamcity.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
-scp -P "$remote_port" -i ${ssh_key} ./teamcity-agent.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 
 ## add services ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl enable teamcity"
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl restart teamcity"
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl enable teamcity-agent"
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl restart teamcity-agent"
