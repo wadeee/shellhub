@@ -31,14 +31,19 @@ rpm -qa | grep redis
 ## uninstall rpm
 rpm -e redis-5.0.3-5.module_el8.4.0+955+7126e393.x86_64
 
+## dnf update
+dnf update -y
+
 ## dnf install
 dnf install -y nginx
+dnf module install -y nodejs:16
 
 ## dnf list software
 dnf list ## list all
 dnf list installed ## list installed
 dnf list available ## list available
 dnf list nginx ## list nginx
+dnf list maven --showduplicates ## list maven
 
 ## dnf uninstall
 dnf remove -y nginx
