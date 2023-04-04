@@ -110,3 +110,8 @@ a=$(date)
 echo "$a"
 a=$(ls)
 echo "$a"
+
+## nohup
+./shell.sh & ## run in background, but the output will be lost
+nohup ./shell.sh ## run in background, and the output will be saved in nohup.out, but the terminal will be blocked
+nohup ./shell.sh & ## run in background, and the output will be saved in nohup.out
