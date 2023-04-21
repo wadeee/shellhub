@@ -1,0 +1,11 @@
+[Unit]
+Description=Gogs
+
+[Service]
+Type=simple
+WorkingDirectory=/root/gogs
+ExecStart=/root/gogs/gogs web
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
