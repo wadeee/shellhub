@@ -2,10 +2,10 @@
 Description=Gogs
 
 [Service]
-Type=simple
 WorkingDirectory=/root/gogs
 ExecStart=/root/gogs/gogs web
 Restart=always
+Environment=USER=root HOME=/root
 
 [Install]
 WantedBy=multi-user.target
