@@ -36,3 +36,17 @@ rm -rf /mnt/data/temp/*
 cp -r /root/temp/* /mnt/data/temp
 rm -rf /root/temp
 ln -s /mnt/data/temp /root/temp
+
+## extend
+lsblk
+fdisk /dev/sda
+# add: n p (enter) (enter) w
+pvcreate /dev/sda3
+pvdisplay ## see VG name
+vgextend cs /dev/sda3
+vgdisplay
+fdisk -l
+lvextend -l +100%FREE /dev/mapper/cs-home
+xfs_growfs /dev/mapper/cs-home
+df -h
+
