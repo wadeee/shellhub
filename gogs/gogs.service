@@ -1,8 +1,8 @@
 [Unit]
 Description=Gogs
-After=syslog.target
-After=network.target
-After=mysqld.service
+#After=syslog.target
+#After=network.target
+#After=mysqld.service
 
 [Service]
 Type=simple
@@ -19,4 +19,4 @@ PrivateTmp=yes
 NoNewPrivileges=true
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
