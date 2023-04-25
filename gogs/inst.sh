@@ -25,6 +25,7 @@ done
 
 ## firewall
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
+scp -P "$remote_port" -i $ssh_key ./config "$remote_user"@"$remote_host":/etc/selinux/
 
 ## install git ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y git"
@@ -57,7 +58,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 
 ## upload config ##
-scp -P "$remote_port" -i $ssh_key ./gogs.service "$remote_user"@"$remote_host":/usr/lib/systemd/user/
+scp -P "$remote_port" -i $ssh_key ./gogs.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 scp -P "$remote_port" -i $ssh_key ./nginx.conf "$remote_user"@"$remote_host":/etc/nginx/
 scp -P "$remote_port" -i $ssh_key ./gogs.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
 
@@ -66,6 +67,9 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enabl
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart nginx"
 
 ## add gogs service ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl --user daemon-reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl --user enable gogs"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl --user restart gogs"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable gogs"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart gogs"
+
+## reboot ##
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "reboot"

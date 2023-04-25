@@ -1,8 +1,8 @@
 [Unit]
 Description=Gogs
-#After=syslog.target
-#After=network.target
-#After=mysqld.service
+After=syslog.target
+After=network.target
+After=mysqld.service
 
 [Service]
 Type=simple
@@ -11,6 +11,7 @@ Group=git
 WorkingDirectory=/home/git/gogs
 ExecStart=/home/git/gogs/gogs web
 Restart=always
+RestartSec=10s
 Environment=USER=git HOME=/home/git
 
 ProtectSystem=full
@@ -19,4 +20,4 @@ PrivateTmp=yes
 NoNewPrivileges=true
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
