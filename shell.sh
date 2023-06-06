@@ -99,6 +99,7 @@ top
 
 ## see the service
 ps aux | grep 1213
+## kill <PID>
 kill 1213
 
 ## set variable
