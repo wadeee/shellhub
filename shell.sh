@@ -116,3 +116,12 @@ echo "$a"
 ./shell.sh & ## run in background, but the output will be lost
 nohup ./shell.sh ## run in background, and the output will be saved in nohup.out, but the terminal will be blocked
 nohup ./shell.sh & ## run in background, and the output will be saved in nohup.out
+
+## proxy set
+export all_proxy="localhost:4780"
+#export http_proxy="localhost:4780"
+#export https_proxy="localhost:4780"
+# unset
+unset all_proxy
+#unset http_proxy
+#unset https_proxy
