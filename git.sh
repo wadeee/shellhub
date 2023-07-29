@@ -27,3 +27,12 @@ chsh git -s $(which git-shell)
 # chsh git -s $(which bash)
 ## git clone git@server:/srv/cellxiot.git
 ## git clone ssh://git@office.cellx.com.cn:36010/srv/cellxiot.git
+
+## git config
+## git config list
+git config --list
+git config --system --list
+git config --global --list
+## set git config
+git config --global user.name "Wade"
+git config --global user.email "wadechen@outlook.com"
