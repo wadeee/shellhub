@@ -1,5 +1,10 @@
 #!/bin/sh
 
+## copy
+cp ./a/a.txt ./b/b.txt
+cp -r ./a/b ./cpa/b ## not stable
+cp -r ./a/b/* ./cpa/b ## stable
+
 ## new a file
 touch a.txt
 vi a.txt
@@ -10,7 +15,7 @@ cat a.txt
 ## copy file
 cat a.txt > b.txt
 
-## move file
+## move file or rename file
 mv a.txt b.txt
 
 ## tail line real time
