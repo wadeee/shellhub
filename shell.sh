@@ -143,3 +143,9 @@ systemctl daemon-reload
 ## log
 journalctl -u nginx
 journalctl -u nginx -f ## log tail line
+
+## brew
+brew list
+brew install node
+brew uninstall node
+brew search node
