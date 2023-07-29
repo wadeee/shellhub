@@ -125,3 +125,16 @@ export all_proxy="localhost:4780"
 unset all_proxy
 #unset http_proxy
 #unset https_proxy
+
+## systemd
+systemctl status nginx
+systemctl enable nginx
+systemctl disable nginx
+systemctl start nginx
+systemctl stop nginx
+systemctl restart nginx
+## daemon reload
+systemctl daemon-reload
+## log
+journalctl -u nginx
+journalctl -u nginx -f ## log tail line
