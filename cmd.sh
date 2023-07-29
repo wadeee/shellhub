@@ -11,3 +11,10 @@ fsutil file createnew "C:/Users/Wadec/Desktop/a.txt" %var%
 
 ## call
 call a.bat
+
+## wsl ##
+## wsl list ##
+wsl --list
+
+## wsl unregister ##
+wsl --unregister Ubuntu-20.04
