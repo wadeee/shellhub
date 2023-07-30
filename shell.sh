@@ -149,3 +149,4 @@ brew list
 brew install node
 brew uninstall node
 brew search node
+brew --prefix node
