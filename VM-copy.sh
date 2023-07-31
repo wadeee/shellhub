@@ -2,7 +2,11 @@
 
 vm_path=~/Documents/Virtual\ Machines/
 origin_vm=CentOS8
-target_vm=$1
+target_vm=
+## macOS
+#vm_path=~/Virtual\ Machines.localized/
+#origin_vm="CentOS 9 origin.vmwarevm"
+#target_vm=
 
 showHelp() {
   echo "Usage: sh ./VM-copy.sh [OPTIONS]"
@@ -18,6 +22,7 @@ while getopts "p:o:t:" opt; do
     p ) vm_path=$OPTARG ;;
     o ) origin_vm=$OPTARG ;;
     t ) target_vm=$OPTARG ;;
+#    t ) target_vm="$OPTARG.vmwarevm" ;;
     ? ) showHelp ;;
   esac
 done
