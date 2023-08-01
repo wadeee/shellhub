@@ -150,3 +150,12 @@ brew install node
 brew uninstall node
 brew search node
 brew --prefix node
+
+## scp
+scp -P 22 -i ~/.ssh/id_rsa ./sentinel.service root@192.168.0.90:/usr/lib/systemd/system/
+
+## ssh
+ssh -p 22 -i ~/.ssh/id_rsa root@192.168.0.90 "systemctl daemon-reload"
+
+## rsync
+rsync -e "ssh -p 22 -i ~/.ssh/id_rsa" ./sentinel-dashboard-1.8.6.jar root@192.168.0.90:/root/jars/
