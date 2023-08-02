@@ -166,3 +166,9 @@ ssh -p 22 -i ~/.ssh/id_rsa root@192.168.0.90 "systemctl daemon-reload"
 
 ## rsync
 rsync -e "ssh -p 22 -i ~/.ssh/id_rsa" ./sentinel-dashboard-1.8.6.jar root@192.168.0.90:/root/jars/
+
+## diskutil # burn iso to usb in macOS
+diskutil list
+diskutil unmountDisk /dev/disk4
+sudo dd if=/Users/wade/Downloads/CentOS-Stream-9-latest-aarch64-dvd1.iso of=/dev/disk4 bs=1m
+diskutil eject /dev/disk4
