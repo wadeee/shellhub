@@ -151,6 +151,13 @@ brew uninstall node
 brew search node
 brew --prefix node
 
+# brew services
+brew services list
+brew services start redis
+brew services stop redis
+brew services restart redis
+brew services info redis
+
 ## scp
 scp -P 22 -i ~/.ssh/id_rsa ./sentinel.service root@192.168.0.90:/usr/lib/systemd/system/
 
