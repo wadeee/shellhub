@@ -123,10 +123,11 @@ nohup ./shell.sh ## run in background, and the output will be saved in nohup.out
 nohup ./shell.sh & ## run in background, and the output will be saved in nohup.out
 
 ## proxy set
-export all_proxy="localhost:4780"
-#export http_proxy="localhost:4780"
-#export https_proxy="localhost:4780"
+export all_proxy="http://localhost:4780"
+#export http_proxy="http://localhost:4780"
+#export https_proxy="http://localhost:4780"
 ## set in ~/.zshrc
+## echo $all_proxy
 # unset
 unset all_proxy
 #unset http_proxy
