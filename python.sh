@@ -8,5 +8,5 @@ python manage.py createsuperuser
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
-## proto
+## protobuf
 protoc -I protobuf --python_out=protobuf protobuf/dy.proto
