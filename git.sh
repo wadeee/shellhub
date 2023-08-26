@@ -36,3 +36,11 @@ git config --global --list
 ## set git config
 git config --global user.name "Wade"
 git config --global user.email "wadechen@outlook.com"
+## set proxy
+git config --global http.proxy "http://localhost:7890"
+git config --global https.proxy "http://localhost:7890"
+git config --global core.proxy "socks5://localhost:7890"
+## unset
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+git config --global --unset core.proxy
