@@ -174,3 +174,7 @@ diskutil list
 diskutil unmountDisk /dev/disk4
 sudo dd if=/Users/wade/Downloads/CentOS-Stream-9-latest-aarch64-dvd1.iso of=/dev/disk4 bs=1m
 diskutil eject /dev/disk4
+
+## netcat
+nc -x localhost:7890 -v google.com 443
+ncat --proxy 127.0.0.1:7890 --verbos google.com 443 ## windows netcat ncat
