@@ -123,15 +123,15 @@ nohup ./shell.sh ## run in background, and the output will be saved in nohup.out
 nohup ./shell.sh & ## run in background, and the output will be saved in nohup.out
 
 ## proxy set
-export all_proxy="http://localhost:4780"
-#export http_proxy="http://localhost:4780"
-#export https_proxy="http://localhost:4780"
-## set in ~/.zshrc
+export all_proxy="socks5://localhost:7890"
+export http_proxy="http://localhost:7890"
+export https_proxy="http://localhost:7890"
+## set in ~/.zshrc or ~/.bashrc or ~/.bash_profile
 ## echo $all_proxy
 # unset
 unset all_proxy
-#unset http_proxy
-#unset https_proxy
+unset http_proxy
+unset https_proxy
 
 ## systemd
 systemctl status nginx
