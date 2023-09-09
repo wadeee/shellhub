@@ -24,8 +24,10 @@ tail -n 3 -f /var/log/dnf.log
 ## get arch info
 arch
 
-## get system info
+## get system os info
+cat /etc/redhat-release
 uname -a
+cat /proc/version
 
 ## rpm install
 rpm -ivh /root/software/redis-6.2.6-2.1.x86_64.rpm
