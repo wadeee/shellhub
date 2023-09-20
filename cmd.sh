@@ -18,3 +18,6 @@ wsl --list
 
 ## wsl unregister ##
 wsl --unregister Ubuntu-20.04
+
+## msi install
+msiexec /i "C:\a.msi" /l*v "C:\a-install.log"
