@@ -21,3 +21,10 @@ wsl --unregister Ubuntu-20.04
 
 ## msi install
 msiexec /i "C:\a.msi" /l*v "C:\a-install.log"
+
+## nssm
+nssm install servername
+nssm start servername
+nssm stop servername
+nssm restart servername
+nssm remove servername
