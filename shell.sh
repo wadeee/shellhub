@@ -184,3 +184,8 @@ ncat --proxy 127.0.0.1:7890 --verbos google.com 443 ## windows netcat ncat
 ## wget
 wget https://localhost/a.txt
 wget -P ~/temp -O b.txt https://localhost/a.txt
+
+## jenv
+jenv add /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+jenv versions
+jenv global 21
