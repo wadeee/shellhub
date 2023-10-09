@@ -35,8 +35,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install 
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=6379/tcp --zone=public --permanent"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable redis"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart redis"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable --now redis"
 
 ## nginx ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"
@@ -63,14 +62,11 @@ scp -P "$remote_port" -i $ssh_key ./nginx.conf "$remote_user"@"$remote_host":/et
 scp -P "$remote_port" -i $ssh_key ./gogs.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
 
 ## nginx restart ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable nginx"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart nginx"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable --now nginx"
 
 ## add gogs service ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable gogs"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl stop gogs"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start gogs"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable --now gogs"
 
 ## reboot ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "reboot"
