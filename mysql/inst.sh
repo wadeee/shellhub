@@ -32,6 +32,10 @@ ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "timedatectl s
 
 ## install mysql ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "dnf -y install @mysql"
+## install mysql on CentOS9 ##
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install mysql-community-server"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "grep 'A temporary password is generated' /var/log/mysqld.log | tail -1"
 
 ## enable and start server ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl enable mysqld"
