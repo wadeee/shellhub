@@ -15,6 +15,8 @@ git rebase main
 git reset HEAD^
 git reset --hard HEAD~2
 git push -f
+git push origin open:main # open -> origin main
+git pull origin open
 git pull -f origin main:main
 git push origin --delete dev_branch
 
