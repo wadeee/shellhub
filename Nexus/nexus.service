@@ -1,0 +1,8 @@
+[Unit]
+Description=nexus
+After=network.target
+[Service]
+TimeoutStartSec=0
+ExecStart=/root/nexus/nexus-3.62.0-01/bin/nexus run
+[Install]
+WantedBy=multi-user.target
