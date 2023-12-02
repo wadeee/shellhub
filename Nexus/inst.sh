@@ -27,6 +27,9 @@ done
 scp -P "$remote_port" -i ${ssh_key} ./nexus-3.62.0-01-unix.tar.gz "$remote_user"@"$remote_host":/root/
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "rm -rf /root/nexus && mkdir -p /root/nexus && cd /root/nexus && tar -xvf /root/nexus-3.62.0-01-unix.tar.gz -C /root/nexus"
 
+## install java-1.8 ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
+
 ## firewall
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 80"
