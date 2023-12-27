@@ -26,21 +26,12 @@ done
 ## set timezone ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
 
-## update mirror urls ##
-#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "sed -i -e 's|mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-*"
-#ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "sed -i -e 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-
 ## install mysql ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "dnf -y install @mysql"
-## install mysql on CentOS9 ##
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm"
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install mysql-community-server"
 
 ## enable and start server ##
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl enable mysqld"
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl start mysqld"
-## get password on CentOS9 ##
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "grep 'A temporary password is generated' /var/log/mysqld.log | tail -1"
 
 ## open port 3306
 ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "firewall-cmd --add-port=3306/tcp --zone=public --permanent"
