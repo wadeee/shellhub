@@ -67,6 +67,3 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enabl
 ## add gogs service ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable --now gogs"
-
-## reboot ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "reboot"
