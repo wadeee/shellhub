@@ -24,5 +24,5 @@ while getopts "h:p:u:" opt; do
 done
 
 ## install arths ##
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "mkdir /root/jars/"
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "curl -o /root/jars/arthas-boot.jar https://arthas.aliyun.com/arthas-boot.jar"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir /root/jars/"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "curl -o /root/jars/arthas-boot.jar https://arthas.aliyun.com/arthas-boot.jar"

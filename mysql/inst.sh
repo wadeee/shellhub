@@ -24,15 +24,15 @@ while getopts "h:p:u:" opt; do
 done
 
 ## set timezone ##
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
 
 ## install mysql ##
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "dnf -y install @mysql"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install @mysql"
 
 ## enable and start server ##
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl enable mysqld"
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "systemctl start mysqld"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable mysqld"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start mysqld"
 
 ## open port 3306
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "firewall-cmd --add-port=3306/tcp --zone=public --permanent"
-ssh -p "$remote_port" -i ${ssh_key} "$remote_user"@"$remote_host" "firewall-cmd --reload"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=3306/tcp --zone=public --permanent"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
