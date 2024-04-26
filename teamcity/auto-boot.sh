@@ -27,19 +27,23 @@ done
 ## install teamcity online ##
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://download.jetbrains.com.cn/teamcity/TeamCity-2022.10.2.tar.gz && tar zxf TeamCity-2022.10.2.tar.gz"
 ## install teamcity local ##
-scp -P "$remote_port" -i $ssh_key ./TeamCity-2022.10.2.tar.gz "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/TeamCity && cd /root && tar zxf TeamCity-2022.10.2.tar.gz"
+scp -P "$remote_port" -i $ssh_key ./TeamCity-2024.03.tar.gz "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/TeamCity && cd /root && tar zxf TeamCity-2024.03.tar.gz"
 
 ## firewall
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 8111"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=8111/tcp --zone=public --permanent"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 80"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=80/tcp --zone=public --permanent"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 
 ## upload config ##
 scp -P "$remote_port" -i $ssh_key ./teamcity.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
+scp -P "$remote_port" -i $ssh_key ./teamcity.nginx.http.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
+scp -P "$remote_port" -i $ssh_key ./nginx.conf "$remote_user"@"$remote_host":/etc/nginx/
 
 ## add services ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable teamcity"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart teamcity"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable nginx"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart nginx"
