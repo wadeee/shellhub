@@ -1,15 +1,19 @@
 #!/bin/sh
 
-## install java-1.8 ##
+## install java-1.8 JDK##
 dnf install -y java-1.8.0-openjdk-devel.x86_64
 
-## set environment parameters ##
-## important! this path will change please care ##
-echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.el8_4.x86_64" >> /etc/profile
-source /etc/profile ## IMPOTANT! for next step ##
-echo "export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar" >> /etc/profile
-echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
-source /etc/profile
+## install java-1.8 JRE##
+dnf install -y java-1.8.0-openjdk
 
-## rerun shell ##
-exec $SHELL
+## install java-1.8 JRE core##
+dnf install -y java-1.8.0-openjdk-headless
+
+## install java 11 ##
+dnf install java-11-openjdk
+
+## install java 11 ##
+dnf install java-11-openjdk
+
+## install java 17 ##
+dnf install java-17-openjdk
