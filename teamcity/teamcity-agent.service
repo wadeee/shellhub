@@ -3,7 +3,7 @@ Description=teamcity-agent
 After=network.target
 [Service]
 Type=forking
-ExecStart=/bin/sh /root/TeamCity/buildAgent/bin/agent.sh start
-ExecStop=/bin/sh /root/TeamCity/buildAgent/bin/agent.sh stop
+ExecStart=/bin/sh /root/buildAgent/bin/agent.sh start
+ExecStop=/bin/sh /root/buildAgent/bin/agent.sh stop
 [Install]
 WantedBy=multi-user.target
