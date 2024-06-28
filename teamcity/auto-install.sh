@@ -23,8 +23,8 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
-## install java-1.8 ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
+## install java 11 ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-11-openjdk-devel.x86_64"
 
 ## install nginx
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"
