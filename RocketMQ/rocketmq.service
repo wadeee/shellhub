@@ -3,7 +3,7 @@ Description=rocketmq service
 After=network.target mqnamesrv.service
 
 [Service]
-Type=forking
+Type=simple
 User=root
 WorkingDirectory=/root/rocketmq-all-5.2.0-bin-release/bin/
 ExecStart=/root/rocketmq-all-5.2.0-bin-release/bin/mqbroker -n localhost:10911 autoCreateTopicEnable=true
