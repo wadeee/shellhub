@@ -1,0 +1,14 @@
+[Unit]
+Description=mqnamesrv service
+After=network.target
+
+[Service]
+Type=forking
+User=root
+WorkingDirectory=/root/rocketmq-all-5.2.0-bin-release/bin/
+ExecStart=/root/rocketmq-all-5.2.0-bin-release/bin/mqnamesrv
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+rocketmq.service
