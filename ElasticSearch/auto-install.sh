@@ -27,6 +27,15 @@ done
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
 scp -P "$remote_port" -i $ssh_key ./selinux/config "$remote_user"@"$remote_host":/etc/selinux/
 
+## install nginx ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"
+scp -P "$remote_port" -i $ssh_key ./nginx.conf "$remote_user"@"$remote_host":/etc/nginx/
+scp -P "$remote_port" -i $ssh_key ./logstash.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable nginx"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart nginx"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9601/tcp --zone=public --permanent"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 9601"
+
 ## install ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch"
@@ -34,6 +43,7 @@ scp -P "$remote_port" -i $ssh_key ./elasticsearch.repo "$remote_user"@"$remote_h
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y elasticsearch"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y logstash"
 scp -P "$remote_port" -i $ssh_key ./01-logstash-simple.conf "$remote_user"@"$remote_host":/etc/logstash/conf.d/
+scp -P "$remote_port" -i $ssh_key ./elasticsearch.yml "$remote_user"@"$remote_host":/etc/elasticsearch/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9200/tcp --zone=public --permanent"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 9200"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9600/tcp --zone=public --permanent"
