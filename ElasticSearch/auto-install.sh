@@ -54,3 +54,6 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enabl
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart elasticsearch"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable logstash"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart logstash"
+
+## reset password
+## /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
