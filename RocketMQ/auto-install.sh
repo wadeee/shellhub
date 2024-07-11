@@ -40,6 +40,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 scp -P "$remote_port" -i $ssh_key ./mqnamesrv.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 scp -P "$remote_port" -i $ssh_key ./rocketmq.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
+scp -P "$remote_port" -i $ssh_key ./runbroker.sh "$remote_user"@"$remote_host":/root/rocketmq-all-5.2.0-bin-release/bin/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable mqnamesrv"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart mqnamesrv"
