@@ -30,8 +30,8 @@ done
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl stop nginx"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y epel-release && dnf makecache"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y certbot"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "certbot certonly --standalone -d $domain --email wadechen@outlook.com"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "certbot certonly --standalone -d $domain --email wadechenn@gmail.com"
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "certbot certonly --webroot -w /usr/share/namegeneratorsystem-ui -d $domain"
-scp -P "$remote_port" -i $ssh_key ./crontab "$remote_user"@"$remote_host":/etc/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart crond"
+#scp -P "$remote_port" -i $ssh_key ./crontab "$remote_user"@"$remote_host":/etc/
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart crond"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start nginx"
