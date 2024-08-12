@@ -30,7 +30,6 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget -O buildAg
 
 ## upload config ##
 scp -P "$remote_port" -i $ssh_key ./teamcity-agent.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
-scp -P "$remote_port" -i $ssh_key ./settings.xml "$remote_user"@"$remote_host":/root/buildAgent/tools/maven3_9/conf/
 
 ## add services ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
