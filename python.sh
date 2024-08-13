@@ -8,6 +8,9 @@ python manage.py createsuperuser
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
+## tuna
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
 ## protobuf
 protoc -I protobuf --python_out=protobuf protobuf/dy.proto
 
