@@ -5,3 +5,6 @@
 *.rar
 *.jar
 *.tar.gz
+
+*.tok
+*.run
