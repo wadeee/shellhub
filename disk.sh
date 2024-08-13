@@ -4,6 +4,7 @@
 fdisk -l
 lsblk
 df -h
+df -h /var ## 查看/var在文件系统的位置
 
 ## disk partition
 fdisk /dev/sdb
@@ -54,3 +55,13 @@ lvextend -l +100%FREE /dev/mapper/cs-home
 xfs_growfs /dev/mapper/cs-home
 df -h
 
+## power off sudden ##
+lvm
+pvs
+vgs
+lvs
+mount /dev/vg_name/lv_root /sysroot
+## mount /dev/cs/root /sysroot
+xfs_repair /dev/sda1
+mount /dev/cs/root /sysroot
+smartctl -a /dev/sda
