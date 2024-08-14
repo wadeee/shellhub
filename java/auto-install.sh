@@ -33,7 +33,7 @@ done
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-headless"
 
 ## install java 11 ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install java-11-openjdk"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install java-11-openjdk"
 
 ## install java 17 ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install java-17-openjdk"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install java-17-openjdk"
