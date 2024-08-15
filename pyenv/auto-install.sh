@@ -23,10 +23,6 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
-## temp
-scp -P "$remote_port" -i $ssh_key ./install.sh "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" ""
-
 
 ## install pyenv
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "sudo dnf install -y @development zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils"
