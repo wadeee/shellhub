@@ -29,7 +29,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://ww
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar xvfz sqlite-autoconf-3460100.tar.gz"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd sqlite-autoconf-3460100 && ./configure --prefix=/usr/local && make && make install"
 
-## install sqlite3
+## install sqlite3 src
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y gcc make readline-devel"
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://www.sqlite.org/2024/sqlite-src-3460100.zip"
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip sqlite-src-3460100.zip"
