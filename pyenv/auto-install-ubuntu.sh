@@ -25,7 +25,7 @@ done
 
 
 ## install pyenv
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "sudo dnf install -y @development zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "git clone https://github.com/pyenv/pyenv.git ~/.pyenv"
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "git clone https://gitee.com/wadde/pyenv.git ~/.pyenv"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "echo 'export PYENV_ROOT=\"\$HOME/.pyenv\"' >> ~/.bashrc"
