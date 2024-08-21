@@ -23,6 +23,12 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## get open-webui.zip ##
+## docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+## apt update
+## apt install -y zip
+## cd /app && zip -r /open-webui.zip ./*
+
 ## set timezone ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
 
