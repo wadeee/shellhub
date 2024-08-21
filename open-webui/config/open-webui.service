@@ -1,0 +1,10 @@
+[Unit]
+Description=open-webui-backend
+After=network.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /root/open-webui/backend/start.sh
+Restart=always
+RestartSec=10s
+[Install]
+WantedBy=multi-user.target
