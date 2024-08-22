@@ -189,3 +189,8 @@ wget -P ~/temp -O b.txt https://localhost/a.txt
 jenv add /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
 jenv versions
 jenv global 21
+
+## sync time
+# dnf install -y chrony
+# systemctl status chronyd
+chronyc makestep
