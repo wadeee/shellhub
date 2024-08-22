@@ -45,7 +45,7 @@ ln -s /mnt/data/temp /root/temp
 ## extend
 lsblk
 fdisk /dev/sda
-# add: n p (enter) (enter) w
+# add: n (enter) (enter) p (enter) (enter) w
 pvcreate /dev/sda3
 pvdisplay ## see VG name
 vgextend cs /dev/sda3
