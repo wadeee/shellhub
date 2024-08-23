@@ -19,6 +19,11 @@ git push origin open:main # open -> origin main
 git pull origin open
 git pull -f origin main:main
 git push origin --delete dev_branch
+git tag V1.0
+git tag -a V1.0 -m "Release version 1.0"
+git push origin V1.0
+git tag -d V1.0
+git push --delete origin V1.0
 
 ## git serve ##
 git init --bare cellxiot.git
@@ -46,3 +51,6 @@ git config --global core.proxy "socks5://localhost:7890"
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 git config --global --unset core.proxy
+
+## windows proxy
+git config --global url."https://".insteadOf git://
