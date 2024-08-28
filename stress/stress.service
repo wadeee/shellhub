@@ -1,0 +1,6 @@
+[Unit]
+Description=stress
+[Service]
+ExecStart=/usr/bin/stress --cpu 6
+[Install]
+WantedBy=multi-user.target
