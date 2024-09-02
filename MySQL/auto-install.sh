@@ -26,6 +26,10 @@ done
 ## set timezone ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
 
+## update selinux config ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
+scp -P "$remote_port" -i $ssh_key ./selinux/config "$remote_user"@"$remote_host":/etc/selinux/
+
 ## install mysql ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023"
