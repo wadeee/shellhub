@@ -4,14 +4,14 @@ SHOW VARIABLES LIKE 'validate_password%';
 SET GLOBAL validate_password.policy = LOW;
 ALTER USER USER() IDENTIFIED BY "password";
 
--- show root's hosts
-USE mysql;
-SELECT host, user, authentication_string, plugin FROM user;
-
 -- enable root remote login
 USE mysql;
 UPDATE user SET host='%' WHERE user ='root';
 FLUSH PRIVILEGES;
+
+-- show root's hosts
+USE mysql;
+SELECT host, user, authentication_string, plugin FROM user;
 
 -- disable root remote login
 USE mysql;
