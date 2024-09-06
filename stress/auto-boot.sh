@@ -28,5 +28,7 @@ done
 # nproc
 scp -P "$remote_port" -i $ssh_key ./stress.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start stress"
+scp -P "$remote_port" -i $ssh_key ./crontab "$remote_user"@"$remote_host":/etc/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart crond"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start stress"
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "nohup stress --cpu 6 > /dev/null 2>&1 &"
