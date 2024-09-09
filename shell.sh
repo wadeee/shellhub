@@ -199,3 +199,9 @@ jenv global 21
 # dnf install -y chrony
 # systemctl status chronyd
 chronyc makestep
+
+## 查看设备温度
+## 需要安装lm_sensors
+sensors
+watch -n 1 sensors
+cat /sys/class/thermal/thermal_zone*/temp
