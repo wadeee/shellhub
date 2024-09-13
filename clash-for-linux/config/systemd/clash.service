@@ -1,0 +1,9 @@
+[Unit]
+Description=clash
+[Service]
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStart=/root/clash/clash-linux-amd64 -d /root/clash/conf/
+[Install]
+WantedBy=multi-user.target
