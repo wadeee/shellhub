@@ -4,6 +4,7 @@ remote_host=
 remote_user="root"
 remote_port="22"
 ssh_key=~/.ssh/id_rsa
+clash_subscribe="http://172.105.209.249:8570/link/OnazBn0SUlTajZ4z?clash=1"
 
 showHelp() {
   echo "Usage: sh ./inst.sh [OPTIONS]"
@@ -54,7 +55,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /root/cla
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /root/clash/"
 scp -P "$remote_port" -i $ssh_key ./clash-linux-amd64 "$remote_user"@"$remote_host":/root/clash/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "chmod +x /root/clash/clash-linux-amd64"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "curl -o /root/clash/clash_config.yaml https://knmvc.site/NBCMR/FJ9Bl/ch"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "curl -o /root/clash/clash_config.yaml $clash_subscribe"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /root/clash/conf"
 scp -P "$remote_port" -i $ssh_key ./config.yaml "$remote_user"@"$remote_host":/root/clash/conf/
 scp -P "$remote_port" -i $ssh_key ./Country.mmdb "$remote_user"@"$remote_host":/root/clash/conf/
