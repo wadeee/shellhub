@@ -1,8 +1,8 @@
 #!/bin/sh
 
 vm_path=~/Documents/Virtual\ Machines/
-origin_vm="CentOS stream 8"
-target_vm="c8 t1"
+origin_vm="CentOS Stream 9"
+target_vm="C9CP1"
 ## macOS
 #vm_path=~/Virtual\ Machines.localized/
 #origin_vm="CentOS 9 origin.vmwarevm"
