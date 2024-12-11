@@ -29,6 +29,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/bu
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget -O buildAgentFull.zip http://localhost/update/buildAgentFull.zip && unzip -o buildAgentFull.zip -d /root/buildAgent"
 
 ## upload config ##
+scp -P "$remote_port" -i $ssh_key ./buildAgent.properties "$remote_user"@"$remote_host":/root/buildAgent/conf/
 scp -P "$remote_port" -i $ssh_key ./teamcity-agent.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 
 ## add services ##
