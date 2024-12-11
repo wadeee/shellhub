@@ -206,3 +206,7 @@ chronyc makestep
 sensors
 watch -n 1 sensors
 cat /sys/class/thermal/thermal_zone*/temp
+
+## alternatives
+update-alternatives --list
+update-alternatives --config java
