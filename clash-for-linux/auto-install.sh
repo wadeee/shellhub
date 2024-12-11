@@ -24,9 +24,10 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## use when need the proxy first
 ## add proxy temp
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/profile.d/proxy.sh"
-scp -P "$remote_port" -i $ssh_key ./proxy-temp.sh "$remote_user"@"$remote_host":/etc/profile.d/
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/profile.d/proxy.sh"
+#scp -P "$remote_port" -i $ssh_key ./proxy-temp.sh "$remote_user"@"$remote_host":/etc/profile.d/
 
 ## update selinux config ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
