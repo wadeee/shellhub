@@ -13,6 +13,4 @@ MAILTO=root
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
-  30 3  *  *  * root       certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"
   30 2  *  *  * root       /bin/bash /root/backup.sh
-  0  3  *  *  * root       reboot

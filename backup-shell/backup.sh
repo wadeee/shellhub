@@ -2,5 +2,5 @@
 
 # zip
 mkdir -p /root/backup/
-mv -f /root/backup/name_generator.sql /root/backup/name_generator.pre.sql
-mysqldump -uroot -p782231 name_generator > /root/backup/name_generator.sql
+mv -f /root/backup/mayercnc_web.sql /root/backup/mayercnc_web.pre.sql
+mysqldump -uroot -ppassword --disable-keys --create-options --skip-extended-insert --routines mayercnc_web > /root/backup/mayercnc_web.sql
