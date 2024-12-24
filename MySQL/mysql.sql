@@ -18,6 +18,10 @@ USE mysql;
 UPDATE user SET host='localhost' WHERE user ='root';
 FLUSH PRIVILEGES;
 
+-- update password & enable root remote login
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+FLUSH PRIVILEGES;
+
 -- create database
 CREATE SCHEMA `dbname`;
 
