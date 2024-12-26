@@ -8,6 +8,7 @@ ssh-keygen -m PEM -t rsa -C "youremail.com" -f ~/.ssh/id_rsa_ssh8
 
 ## remove the host identification
 ssh-keygen -R 192.168.0.147
+ssh-keygen -R [192.168.0.147]:10023
 
 ## add public key to the server
 ssh-copy-id -i ~/.ssh/id_rsa root@192.168.0.91
