@@ -4,7 +4,7 @@
 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
 
 ## export password
-export ELASTIC_PASSWORD="your_password"
+export ELASTIC_PASSWORD="password"
 
 ## token forkibana
 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
@@ -44,30 +44,28 @@ curl -u elastic:$ELASTIC_PASSWORD -X POST 'http://localhost:9200/pdf-test1/_doc?
 ## get infos
 curl -u elastic:$ELASTIC_PASSWORD localhost:9200
 
+## get users
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X GET "http://localhost:9200/_security/user?pretty" \
+  -H "Content-Type: application/json"
+
 ## add kibana user
 curl -u elastic:$ELASTIC_PASSWORD \
   -X POST "http://localhost:9200/_security/user/kibana_admin" \
   -H "Content-Type: application/json" \
   -d '{
-    "password": "kb782231",
+    "password": "password",
     "roles": ["superuser", "kibana_admin"],
     "full_name": "Kibana Admin"
   }'
 
 ## modify kibana user
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT "http://localhost:9200/_security/user/kibana_admin" \
+  -X PUT "http://localhost:9200/_security/user/kibana_system/_password" \
   -H 'Content-Type: application/json' \
   -d '{
-    "roles": ["superuser", "kibana_admin"]
+    "password": "password"
   }'
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT "http://localhost:9200/_security/user/kibana_system" \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "password": "kb782231"
-  }'
-
 
 ## properties
 curl -u elastic:$ELASTIC_PASSWORD \
@@ -134,17 +132,12 @@ curl -u elastic:$ELASTIC_PASSWORD -X GET 'localhost:9200/temp/_count'
 
 ## search all
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST 'localhost:9200/pdf-test1/_search' \
-  -H 'Content-Type: application/json'
-
-## pretty
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST 'localhost:9200/temp/_search?pretty' \
+  -X POST 'localhost:9200/pdf-test1/_search?pretty' \
   -H 'Content-Type: application/json'
 
 ## search
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST 'localhost:9200/temp/_search' \
+  -X POST 'localhost:9200/temp/_search?pretty' \
   -H 'Content-Type: application/json' \
   -d '{
     "query" : {
@@ -153,11 +146,11 @@ curl -u elastic:$ELASTIC_PASSWORD \
       }
     },
     "highlight" : {
-        "pre_tags" : ["<tag1>", "<tag2>"],
-        "post_tags" : ["</tag1>", "</tag2>"],
-        "fields" : {
-            "title" : {},
-            "desc" : {}
-        }
+      "pre_tags" : ["<tag1>", "<tag2>"],
+      "post_tags" : ["</tag1>", "</tag2>"],
+      "fields" : {
+          "title" : {},
+          "desc" : {}
+      }
     }
   }'
