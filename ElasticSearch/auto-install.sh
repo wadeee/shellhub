@@ -40,11 +40,13 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch"
 scp -P "$remote_port" -i $ssh_key ./elasticsearch.repo "$remote_user"@"$remote_host":/etc/yum.repos.d/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y elasticsearch"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y logstash"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch elasticsearch"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch logstash"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch kibana"
 scp -P "$remote_port" -i $ssh_key ./01-logstash-simple.conf "$remote_user"@"$remote_host":/etc/logstash/conf.d/
 scp -P "$remote_port" -i $ssh_key ./elasticsearch.yml "$remote_user"@"$remote_host":/etc/elasticsearch/
-scp -P "$remote_port" -i $ssh_key ./jvm.options "$remote_user"@"$remote_host":/etc/elasticsearch/
+#scp -P "$remote_port" -i $ssh_key ./jvm.options "$remote_user"@"$remote_host":/etc/elasticsearch/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/usr/share/elasticsearch/bin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis-ik/8.17.2"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9200/tcp --zone=public --permanent"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 9200"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9600/tcp --zone=public --permanent"
@@ -55,6 +57,8 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enabl
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart elasticsearch"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable logstash"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart logstash"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable kibana"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart kibana"
 
 ## reset password
 ## /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
