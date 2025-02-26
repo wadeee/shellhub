@@ -4,15 +4,37 @@
 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
 
 ## export password
-export ELASTIC_PASSWORD="password"
+#export ELASTIC_PASSWORD="password"
 
-## token forkibana
-/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
-eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTAuMTY2LjMwLjExMDo5MjAwIl0sImZnciI6IjAxNmI5NzYzNjUzN2NiNDlmNzcwZjdiOTMzMWJhMWJkNTE3YTA4ZTBiYjY3MTRlNWIwZDk5NmI1NjY0MWI2ODMiLCJrZXkiOiJEajg2UEpVQkRDZ3JpOTIyMEE5OTp1akdDQzZDZVI5dTdFZTJ1OU5SYnh3In0=
+## token for kibana
+#/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
 
 ## install ingest-attachment pdf
 #/usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 #/usr/share/elasticsearch/bin/elasticsearch-plugin list
+
+## get users
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X GET "http://localhost:9200/_security/user?pretty" \
+  -H "Content-Type: application/json"
+
+## add kibana_admin user
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X POST "http://localhost:9200/_security/user/kibana_admin" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "password": "password",
+    "roles": ["superuser", "kibana_admin"],
+    "full_name": "Kibana Admin"
+  }'
+
+## modify kibana_system user
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X PUT "http://localhost:9200/_security/user/kibana_system/_password" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "password": "password"
+  }'
 
 ## add pdf pipeline
 curl -u elastic:$ELASTIC_PASSWORD \
@@ -44,30 +66,7 @@ curl -u elastic:$ELASTIC_PASSWORD -X POST 'http://localhost:9200/pdf-test1/_doc?
 ## get infos
 curl -u elastic:$ELASTIC_PASSWORD localhost:9200
 
-## get users
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X GET "http://localhost:9200/_security/user?pretty" \
-  -H "Content-Type: application/json"
-
-## add kibana user
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST "http://localhost:9200/_security/user/kibana_admin" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "password": "password",
-    "roles": ["superuser", "kibana_admin"],
-    "full_name": "Kibana Admin"
-  }'
-
-## modify kibana user
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT "http://localhost:9200/_security/user/kibana_system/_password" \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "password": "password"
-  }'
-
-## properties
+## add mappings
 curl -u elastic:$ELASTIC_PASSWORD \
   -X PUT 'localhost:9200/temp' \
   -H 'Content-Type: application/json' \
