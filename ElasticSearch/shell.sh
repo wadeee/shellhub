@@ -6,9 +6,6 @@
 ## install plugin analysis-ik
 /usr/share/elasticsearch/bin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis-ik/8.17.2
 
-## token for kibana
-#/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
-
 ## get users
 curl -u elastic:$ELASTIC_PASSWORD \
   -X GET "http://localhost:9200/_security/user?pretty" \
@@ -16,7 +13,7 @@ curl -u elastic:$ELASTIC_PASSWORD \
 
 ## add kibana_admin user
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST "http://localhost:9200/_security/user/kibana_admin" \
+  -X POST "http://localhost:9200/_security/user/kibana_admin?pretty" \
   -H "Content-Type: application/json" \
   -d '{
     "password": "password",
@@ -26,31 +23,10 @@ curl -u elastic:$ELASTIC_PASSWORD \
 
 ## modify kibana_system user
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT "http://localhost:9200/_security/user/kibana_system/_password" \
+  -X PUT "http://localhost:9200/_security/user/kibana_system/_password?pretty" \
   -H 'Content-Type: application/json' \
   -d '{
     "password": "password"
-  }'
-
-## add pdf pipeline
-curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT "http://localhost:9200/_ingest/pipeline/attachment-pipeline" \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "description": "Extracts attachment metadata",
-    "processors": [
-      {
-        "attachment": {
-          "field": "data",
-          "target_field": "content"
-        }
-      },
-      {
-       "remove": {
-         "field": "data"
-       }
-      }
-    ]
   }'
 
 ## get infos
@@ -58,7 +34,7 @@ curl -u elastic:$ELASTIC_PASSWORD localhost:9200
 
 ## add mappings
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT 'localhost:9200/temp' \
+  -X PUT 'localhost:9200/temp?pretty' \
   -H 'Content-Type: application/json' \
   -d '{
     "mappings": {
@@ -84,7 +60,7 @@ curl -u elastic:$ELASTIC_PASSWORD \
 
 ## add
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X POST 'localhost:9200/temp/_doc' \
+  -X POST 'localhost:9200/temp/_doc?pretty' \
   -H 'Content-Type: application/json' \
   -d '{
     "user": "张三",
@@ -108,7 +84,7 @@ curl -u elastic:$ELASTIC_PASSWORD \
 
 ## modify
 curl -u elastic:$ELASTIC_PASSWORD \
-  -X PUT 'localhost:9200/temp/_doc/7j_ZO5UBDCgri9227A6B' \
+  -X PUT 'localhost:9200/temp/_doc/7j_ZO5UBDCgri9227A6B?pretty' \
   -H 'Content-Type: application/json' \
   -d '{
     "user": "李四",
@@ -147,6 +123,42 @@ curl -u elastic:$ELASTIC_PASSWORD \
 ## install ingest-attachment pdf
 #/usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
 #/usr/share/elasticsearch/bin/elasticsearch-plugin list
+
+## add pdf pipeline
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X PUT "http://localhost:9200/_ingest/pipeline/attachment-pipeline?pretty" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "description": "Extracts attachment metadata",
+    "processors": [
+      {
+        "attachment": {
+          "field": "data",
+          "target_field": "pdf_infos",
+          "indexed_chars": -1
+        }
+      },
+      {
+       "remove": {
+         "field": "data"
+       }
+      },
+      {
+       "set": {
+         "field": "pdf_infos.language",
+         "value": "zh"
+       }
+      }
+    ]
+  }'
+
+## delete pdf pipeline
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X DELETE "http://localhost:9200/_ingest/pipeline/attachment-pipeline"
+
+## get all pipelines
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X GET "http://localhost:9200/_ingest/pipeline?pretty"
 
 ## pdf store
 encodedPdf=`cat /root/sample.pdf | base64`

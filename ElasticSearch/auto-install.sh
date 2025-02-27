@@ -47,7 +47,6 @@ scp -P "$remote_port" -i $ssh_key ./01-logstash-simple.conf "$remote_user"@"$rem
 scp -P "$remote_port" -i $ssh_key ./elasticsearch.yml "$remote_user"@"$remote_host":/etc/elasticsearch/
 scp -P "$remote_port" -i $ssh_key ./kibana.yml "$remote_user"@"$remote_host":/etc/kibana/
 scp -P "$remote_port" -i $ssh_key ./elastic-password.sh "$remote_user"@"$remote_host":/etc/profile.d/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/usr/share/elasticsearch/bin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis-ik/8.17.2"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9200/tcp --zone=public --permanent"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 9200"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=9600/tcp --zone=public --permanent"
