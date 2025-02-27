@@ -3,15 +3,11 @@
 ## reset password
 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
 
-## export password
-#export ELASTIC_PASSWORD="password"
+## install plugin analysis-ik
+/usr/share/elasticsearch/bin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis-ik/8.17.2
 
 ## token for kibana
 #/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
-
-## install ingest-attachment pdf
-#/usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
-#/usr/share/elasticsearch/bin/elasticsearch-plugin list
 
 ## get users
 curl -u elastic:$ELASTIC_PASSWORD \
@@ -56,12 +52,6 @@ curl -u elastic:$ELASTIC_PASSWORD \
       }
     ]
   }'
-
-## pdf store
-encodedPdf=`cat /root/sample.pdf | base64`
-json="{\"data\":\"${encodedPdf}\"}"
-echo "$json" > json.file
-curl -u elastic:$ELASTIC_PASSWORD -X POST 'http://localhost:9200/pdf-test1/_doc?pipeline=attachment-pipeline&pretty' -H 'Content-Type: application/json' -d @json.file
 
 ## get infos
 curl -u elastic:$ELASTIC_PASSWORD localhost:9200
@@ -153,3 +143,13 @@ curl -u elastic:$ELASTIC_PASSWORD \
       }
     }
   }'
+
+## install ingest-attachment pdf
+#/usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+#/usr/share/elasticsearch/bin/elasticsearch-plugin list
+
+## pdf store
+encodedPdf=`cat /root/sample.pdf | base64`
+json="{\"data\":\"${encodedPdf}\"}"
+echo "$json" > json.file
+curl -u elastic:$ELASTIC_PASSWORD -X POST 'http://localhost:9200/pdf-test1/_doc?pipeline=attachment-pipeline&pretty' -H 'Content-Type: application/json' -d @json.file
