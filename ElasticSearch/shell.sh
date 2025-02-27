@@ -120,8 +120,7 @@ curl -u elastic:$ELASTIC_PASSWORD \
     }
   }'
 
-## install ingest-attachment pdf
-#/usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+## get plugin list
 #/usr/share/elasticsearch/bin/elasticsearch-plugin list
 
 ## add pdf pipeline
@@ -165,3 +164,15 @@ encodedPdf=`cat /root/sample.pdf | base64`
 json="{\"data\":\"${encodedPdf}\"}"
 echo "$json" > json.file
 curl -u elastic:$ELASTIC_PASSWORD -X POST 'http://localhost:9200/pdf-test1/_doc?pipeline=attachment-pipeline&pretty' -H 'Content-Type: application/json' -d @json.file
+
+## search object content
+curl -u elastic:$ELASTIC_PASSWORD \
+  -X POST 'localhost:9200/pdf-test1/_search?pretty' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query" : {
+      "match" : {
+        "pdf_infos.content" : "天"
+      }
+    }
+  }'
