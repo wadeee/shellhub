@@ -43,7 +43,7 @@ scp -P "$remote_port" -i $ssh_key ./elasticsearch.repo "$remote_user"@"$remote_h
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch elasticsearch"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch logstash"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y --enablerepo=elasticsearch kibana"
-scp -P "$remote_port" -i $ssh_key ./01-logstash-simple.conf "$remote_user"@"$remote_host":/etc/logstash/conf.d/
+scp -P "$remote_port" -i $ssh_key ./logstash-nginx.conf "$remote_user"@"$remote_host":/etc/logstash/conf.d/
 scp -P "$remote_port" -i $ssh_key ./elasticsearch.yml "$remote_user"@"$remote_host":/etc/elasticsearch/
 scp -P "$remote_port" -i $ssh_key ./kibana.yml "$remote_user"@"$remote_host":/etc/kibana/
 scp -P "$remote_port" -i $ssh_key ./elastic-password.sh "$remote_user"@"$remote_host":/etc/profile.d/
