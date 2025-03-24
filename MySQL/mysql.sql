@@ -69,18 +69,3 @@ UPDATE `dbname` SET col1='3', col2='3' WHERE col1='1';
 
 -- delete
 DELETE FROM `dbname` WHERE col1='1';
-
-
-## enable root remote login ##
-# use mysql;
-# select host, user, authentication_string, plugin from user;
-# update user set host='%' where user ='root';
-# update user set host='localhost' where user ='root'; ## disable root remote login
-# flush privileges;
-
-## update password & enable root remote login ##
-# alter user user() identified by "password"; use mysql; update user set host='%' where user ='root'; flush privileges;
-
-## add user
-# create user ry@'%' identified by 'cellxiot654321';
-# grant all privileges on ry-vue.* to ry@'%';
