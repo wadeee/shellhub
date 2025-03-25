@@ -23,17 +23,9 @@ while getopts "h:p:u:w:" opt; do
   esac
 done
 
-## install mysql ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf -y install mysql-server"
-
-## enable and start server ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable --now mysqld"
-
 ## upload SQL
-scp -P "$remote_port" -i $ssh_key ./gogs_0.13.0_linux_amd64.zip "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/gogs && cd /root && unzip -o gogs_0.13.0_linux_amd64.zip"
+scp -P "$remote_port" -i $ssh_key ./gogs_0.13.2_linux_amd64.zip "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/gogs && cd /root && unzip -o gogs_0.13.2_linux_amd64.zip"
 
 ## create database
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -e \"alter user user() identified by 'password'; use mysql; update user set host='%' where user ='root'; flush privileges;\""
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword < /root/gogs/scripts/mysql.sql"

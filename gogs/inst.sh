@@ -44,8 +44,8 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y 
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "adduser git"
 
 ## upload gogs ##
-scp -P "$remote_port" -i $ssh_key ./gogs_0.13.0_linux_amd64.zip "$remote_user"@"$remote_host":/home/git/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /home/git/gogs && cd /home/git && unzip -o gogs_0.13.0_linux_amd64.zip"
+scp -P "$remote_port" -i $ssh_key ./gogs_0.13.2_linux_amd64.zip "$remote_user"@"$remote_host":/home/git/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /home/git/gogs && cd /home/git && unzip -o gogs_0.13.2_linux_amd64.zip"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /home/git/gogs-repositories"
 
 ## user permission ##
