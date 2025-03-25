@@ -25,7 +25,7 @@ done
 
 ## install teamcity ##
 ## install teamcity online ##
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://download.jetbrains.com.cn/teamcity/TeamCity-2022.10.2.tar.gz && tar zxf TeamCity-2022.10.2.tar.gz"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://download.jetbrains.com.cn/teamcity/TeamCity-2025.03.tar.gz && tar zxf TeamCity-2022.10.2.tar.gz"
 ## install teamcity local ##
 scp -P "$remote_port" -i $ssh_key ./TeamCity-2025.03.tar.gz "$remote_user"@"$remote_host":/root/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/TeamCity && cd /root && tar zxf TeamCity-2025.03.tar.gz"

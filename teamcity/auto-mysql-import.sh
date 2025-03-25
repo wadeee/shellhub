@@ -24,5 +24,4 @@ while getopts "h:p:u:w:" opt; do
 done
 
 ## create database
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -e \"alter user user() identified by 'password'; use mysql; update user set host='%' where user ='root'; flush privileges;\""
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword -e \"create schema teamcity;\""

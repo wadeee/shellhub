@@ -7,6 +7,6 @@ ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "rm -f /et
 ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "systemctl daemon-reload"
 ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "systemctl restart nginx"
 
-ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "rm -f /root/TeamCity-2021.1.2.tar.gz"
+ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "rm -f /root/TeamCity-2025.03.tar.gz"
 ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "rm -rf /root/TeamCity"
 ssh -p 36000 -i C:/Users/TS/.ssh/id_rsa_ssh8 root@office.cellx.com.cn "rm -rf /var/local/buildagent"

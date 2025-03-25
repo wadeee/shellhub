@@ -23,8 +23,11 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
-## install java 11 ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-11-openjdk-devel.x86_64"
+## install java 21 ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-21-openjdk-devel.x86_64"
+
+## install git ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y git"
 
 ## install nginx
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"

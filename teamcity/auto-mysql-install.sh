@@ -26,14 +26,16 @@ done
 ## set timezone ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "timedatectl set-timezone Asia/Shanghai"
 
-## install
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y @mysql"
+## update selinux config ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
+scp -P "$remote_port" -i $ssh_key ./selinux/config "$remote_user"@"$remote_host":/etc/selinux/
 
-## enable and start server
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable mysqld"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start mysqld"
-
-## open port 3306
+## install mysql ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y mysql-community-server"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=3306/tcp --zone=public --permanent"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 3306"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --list-ports"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable mysqld"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart mysqld"
