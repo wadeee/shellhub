@@ -23,9 +23,14 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## firewall
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
+scp -P "$remote_port" -i $ssh_key ./selinux/config "$remote_user"@"$remote_host":/etc/selinux/
+
 ## install nexus ##
-scp -P "$remote_port" -i $ssh_key ./nexus-3.62.0-01-unix.tar.gz "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/nexus && mkdir -p /root/nexus && cd /root/nexus && tar -xvf /root/nexus-3.62.0-01-unix.tar.gz -C /root/nexus"
+scp -P "$remote_port" -i $ssh_key ./nexus-unix-x86-64-3.78.2-04.tar.gz "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/nexus && mkdir -p /root/nexus && cd /root/nexus && tar -xvf /root/nexus-unix-x86-64-3.78.2-04.tar.gz -C /root/nexus"
 
 ## nginx ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"
@@ -40,9 +45,15 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 
 ## upload config ##
-scp -P "$remote_port" -i $ssh_key ./nexus-default.properties "$remote_user"@"$remote_host":/root/nexus/nexus-3.62.0-01/etc/
+scp -P "$remote_port" -i $ssh_key ./nexus-default.properties "$remote_user"@"$remote_host":/root/nexus/nexus-3.78.2-04/etc/
 scp -P "$remote_port" -i $ssh_key ./nexus.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
+scp -P "$remote_port" -i $ssh_key ./nginx.conf "$remote_user"@"$remote_host":/etc/nginx/
 scp -P "$remote_port" -i $ssh_key ./nexus.nginx.http.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
+
+## encryption ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /root/nexus/secrets"
+scp -P "$remote_port" -i $ssh_key ./nexus-secrets.json "$remote_user"@"$remote_host":/root/nexus/secrets/
+scp -P "$remote_port" -i $ssh_key ./sonatype-work/nexus.properties "$remote_user"@"$remote_host":/root/nexus/sonatype-work/nexus3/etc/
 
 ## add nexus service ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
