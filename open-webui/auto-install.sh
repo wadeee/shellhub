@@ -49,26 +49,19 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt update"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install libsqlite3-dev -y"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install sqlite3 -y"
 
-## install python 3.11.9
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libsqlite3-dev libffi-dev libbz2-dev wget"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tgz"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -xf Python-3.11.9.tgz"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd /root/Python-3.11.9 && ./configure && make && make install"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /usr/bin/python"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /usr/bin/python3"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /usr/bin/pip"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /usr/bin/pip3"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ln -s /usr/local/bin/python3.11 /usr/bin/python"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ln -s /usr/local/bin/python3.11 /usr/bin/python3"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ln -s /usr/local/bin/pip3.11 /usr/bin/pip"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ln -s /usr/local/bin/pip3.11 /usr/bin/pip3"
+## install conda
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "bash Anaconda3-2024.10-1-Linux-x86_64.sh"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/root/anaconda3/bin/conda init"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/root/anaconda3/bin/conda create --name open-webui python=3.11"
 
 ## open-webui
 scp -P "$remote_port" -i $ssh_key ./open-webui.zip "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install zip -y"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/open-webui/"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /root/open-webui/"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip /root/open-webui.zip -d /root/open-webui/"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd /root/open-webui/backend/ && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd /root/open-webui/backend/ && source /root/anaconda3/etc/profile.d/conda.sh && conda activate open-webui && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple"
 scp -P "$remote_port" -i $ssh_key ./config/open-webui.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 scp -P "$remote_port" -i $ssh_key ./config/.env "$remote_user"@"$remote_host":/root/open-webui/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
@@ -76,5 +69,5 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enabl
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart open-webui"
 
 ## download ollama
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "curl -fsSL https://ollama.com/install.sh | sh"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ollama pull llama3.1:8b"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "source /etc/profile.d/proxy.sh && proxy_on && curl -fsSL https://ollama.com/install.sh | sh"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ollama pull deepseek-r1:1.5b"

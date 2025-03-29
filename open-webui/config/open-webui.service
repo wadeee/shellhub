@@ -3,7 +3,8 @@ Description=open-webui-backend
 After=network.target
 [Service]
 Type=simple
-ExecStart=/usr/bin/bash /root/open-webui/backend/start.sh
+EnvironmentFile=/root/open-webui/.env
+ExecStart=/bin/bash -c 'source /root/anaconda3/etc/profile.d/conda.sh && conda activate open-webui && /root/open-webui/backend/start.sh'
 Restart=always
 RestartSec=10s
 [Install]
