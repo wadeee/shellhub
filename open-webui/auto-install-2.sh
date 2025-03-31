@@ -36,6 +36,12 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "timedatectl set
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt update"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev git ffmpeg vim curl"
 
+## cuda toolkit ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dpkg -i cuda-keyring_1.1-1_all.deb"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt update"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt -y install cuda-toolkit-12-6"
+
 ## install nginx
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y nginx"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/nginx/sites-enabled/default"
@@ -53,7 +59,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install sql
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "bash Anaconda3-2024.10-1-Linux-x86_64.sh"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/root/anaconda3/bin/conda init"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/root/anaconda3/bin/conda create --name open-webui python=3.11"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "/root/anaconda3/bin/conda create --name open-webui python=3.11 -y"
 
 ## open-webui
 scp -P "$remote_port" -i $ssh_key ./open-webui.zip "$remote_user"@"$remote_host":/root/
