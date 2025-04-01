@@ -31,3 +31,4 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt update"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev git ffmpeg vim curl"
 
 #bash /home/cellxserver/NVIDIA-Linux-x86_64-535.161.07-grid.run
+#reboot
