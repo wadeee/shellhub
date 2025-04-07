@@ -24,7 +24,7 @@ while getopts "h:p:u:" opt; do
 done
 
 ## add proxy
-scp -P "$remote_port" -i $ssh_key ./proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
+scp -P "$remote_port" -i $ssh_key ./config/proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
 
 ## apt update
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt update"
