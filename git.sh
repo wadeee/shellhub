@@ -25,6 +25,15 @@ git push origin V1.0
 git tag -d V1.0
 git push --delete origin V1.0
 
+## submodule
+git clone --recurse-submodules git@server:/srv/cellxiot.git
+
+## add submodule
+git submodule add https://github.com/example/lib-utils.git libs/lib-utils
+
+## pull submodules
+git submodule foreach git pull origin main
+
 ## git serve ##
 git init --bare cellxiot.git
 adduser git
