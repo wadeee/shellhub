@@ -28,6 +28,9 @@ git push --delete origin V1.0
 ## submodule
 git clone --recurse-submodules git@server:/srv/cellxiot.git
 
+## pull submodules
+git submodule update --init --recursive
+
 ## add submodule
 git submodule add https://github.com/example/lib-utils.git libs/lib-utils
 
