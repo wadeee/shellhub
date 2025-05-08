@@ -58,11 +58,11 @@ git config --global user.email "wadechen@outlook.com"
 ## set proxy
 git config --global http.proxy "http://localhost:7890"
 git config --global https.proxy "http://localhost:7890"
-git config --global core.proxy "socks5h://localhost:7890"
+#git config --global core.proxy "socks5h://localhost:7890" # 弃用
 ## unset
 git config --global --unset http.proxy
 git config --global --unset https.proxy
-git config --global --unset core.proxy
+#git config --global --unset core.proxy
 
 ## windows proxy
 git config --global url."https://".insteadOf git://
