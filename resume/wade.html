@@ -1,0 +1,903 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8;IE=7;IE=EDGE">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate" media="handheld" href="#"/>
+    <meta charset="utf-8">
+    <title>陈伟城的简历</title>
+    <style>
+        * {
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "Hiragino Sans GB", "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+            color: #333;
+            word-wrap: break-word;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        menu,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+
+        progress {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        a {
+            color: #555;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #00b38a;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 10px 0;
+            font-weight: normal;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p + p {
+            margin-top: 10px;
+        }
+
+        img {
+            border: 0;
+            vertical-align: top;
+            display: inline-block;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ededed;
+            border-radius: 0;
+            font-family: "Hiragino Sans GB", "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+        }
+
+        textarea {
+            overflow: auto;
+        }
+
+        label,
+        select,
+        button,
+        input[type="button"],
+        input[type="reset"],
+        input[type="submit"],
+        input[type="radio"],
+        input[type="checkbox"],
+        input[type="file"] {
+            cursor: pointer;
+        }
+
+        input[type=text],
+        input[type=password],
+        textarea {
+            font-family: "Microsoft Yahei", "SimSun", Arial, "Helvetica Neue", Helvetica;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th,
+        td {
+            padding: 0;
+        }
+
+        strong {
+            font-weight: normal;
+        }
+
+        em,
+        i {
+            font-style: normal;
+        }
+
+        dl,
+        dt,
+        dd {
+            margin: 0;
+        }
+
+        ::selection {
+            color: #fff;
+            background-color: #00b38a;
+        }
+
+        ::-moz-selection {
+            color: #fff;
+            background-color: #00b38a;
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #container {
+            width: 720px;
+            margin: 50px auto 54px auto;
+            border: 1px solid #e3ebe9;
+            border-radius: 5px;
+        }
+
+        .mr-template {
+            padding: 50px 50px 10px;
+        }
+
+        .mr-template .mr-template_title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .mr-template .mr-template_title span {
+            font-size: 18px;
+            color: #333333;
+            font-weight: 600;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .mr-template .mr-template_title span:before {
+            content: '';
+            display: block;
+            border-left: 3px solid #00B38A;
+            height: 16px;
+            width: 3px;
+            position: absolute;
+            left: -7px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .mr-template .mr_md_del {
+            display: none;
+        }
+
+        /***** 基本信息 ****/
+
+        .basic {
+            padding: 50px;
+            background: #FAFAFA;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 1px solid #E3EBE9;
+            display: flex;
+        }
+
+        .basic .basic-photo {
+            height: 88px;
+            width: 88px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .basic .basic-photo img {
+            height: 88px;
+            width: 88px;
+            position: absolute;
+            top: 0;
+            border-radius: 50%;
+        }
+
+        .basic .basic-photo .basic-photo_shadow {
+            display: none;
+        }
+
+        .basic .basic-photo:hover .basic-photo_shadow {
+            display: block;
+        }
+
+        .basic .basic-info {
+            position: relative;
+            width: 100%;
+            margin-left: 20px;
+            flex: 1;
+        }
+
+        .basic .basic-info .edit-btn {
+            position: absolute;
+            right: 0;
+            top: 4px;
+        }
+
+        .basic .basic-info .basic-name-area {
+            overflow: hidden;
+            height: 37px;
+            margin-bottom: 11px;
+        }
+
+        .basic .basic-info .basic-name {
+            float: left;
+            max-width: 250px;
+            font-size: 26px;
+            color: #333333;
+            font-weight: 600;
+            line-height: 37px;
+        }
+
+        .basic .basic-info .icon-sex {
+            width: 13px;
+            height: 13px;
+            float: left;
+            margin-top: 16px;
+            margin-left: 10px;
+            background: none;
+        }
+
+        .basic .basic-info .icon-sex.icon-sex__male {
+            background: url(https://www.lgstatic.com/common/image/pc/icon_man.png);
+        }
+
+        .basic .basic-info .icon-sex.icon-sex__female {
+            background: url(https://www.lgstatic.com/common/image/pc/icon_woman.png);
+        }
+
+        .basic .basic-info .basic-self {
+            margin-top: 20px;
+        }
+
+        .basic .basic-info p {
+            font-size: 14px;
+            color: #333333;
+            line-height: 20px;
+            margin-top: 6px;
+        }
+
+        .basic .basic-info i {
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-tel_icon {
+            width: 11px;
+            height: 14px;
+            margin-right: 2px;
+            background: url(https://www.lgstatic.com/common/image/pc/icon_phone.png);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-email_icon {
+            width: 14px;
+            height: 11px;
+            margin-right: 2px;
+            background: url(https://www.lgstatic.com/common/image/pc/icon_mail.png);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .basic .basic-info .basic-tel {
+            margin-right: 20px;
+        }
+
+        .basic-tel span {
+            vertical-align: middle;
+        }
+
+        .basic-email span {
+            vertical-align: middle;
+        }
+
+        /***** 基本信息 end ****/
+
+        /***** 自我描述 ****/
+
+        .per .per-self_content {
+            position: relative;
+        }
+
+        .per .per-self_content .per-self_des {
+            margin-top: 13px;
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+        }
+
+        .per .per-self_content .per-self_des p {
+            margin-top: 0;
+        }
+
+        .per .per-self_content .per-self_des ol {
+            list-style-type: decimal;
+            -webkit-padding-start: 20px;
+        }
+
+        .per .per-self_content .per-self_des ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        /***** 自我描述 end ****/
+
+        /***** 工作经历 ****/
+
+        .work-exp .work-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .work-exp .work-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+        }
+
+        .work-exp .work-exp_list .exp-list_top {
+            display: flex;
+            align-items: center;
+        }
+
+        .work-exp .work-exp_list .exp-list_top img {
+            width: 46px;
+            height: 46px;
+            margin-right: 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 46px;
+            justify-content: space-between;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right p,
+        .work-exp .work-exp_list .exp-list_top .exp-list_right strong {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .work-exp .work-exp_list .exp-list_top .exp-list_right strong {
+            font-weight: 600;
+        }
+
+        .work-exp .work-exp_list .tagboard {
+            margin: 20px 0 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content {
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+        }
+
+        .tagboard .tagboard-tag {
+            font-size: 12px;
+            color: #999;
+            line-height: 18px;
+            padding: 3px 10px;
+            border: 1px solid #EAEDEC;
+            border-radius: 100px;
+            margin-right: 10px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content ul, .work-exp .work-exp_list .exp-list_content_highlight ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        .work-exp .work-exp_list .exp-list_content ol, .work-exp .work-exp_list .exp-list_content_highlight ol {
+            list-style-type: decimal;
+            -webkit-padding-start: 20px;
+        }
+
+        /***** 工作经历 end ****/
+
+        /***** 项目经历 ****/
+
+        .pro-exp .pro-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title {
+            font-size: 14px;
+            color: #333333;
+            font-weight: 600;
+            cursor: default;
+            display: flex;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title .exp-project_name, .pro-exp .pro-exp_list .exp-list_title .exp-project_company span {
+            max-width: 222px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_title .exp-project_company {
+            display: flex;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_content,
+        .pro-exp .pro-exp_list .exp-project_des {
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+
+        .pro-exp .exp-list_title.active:hover {
+            color: #00B38A;
+            cursor: pointer;
+        }
+
+        .pro-exp .exp-project_url {
+            font-size: 14px;
+            color: #666;
+            line-height: 30px;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_content ul, .pro-exp .pro-exp_list .exp-project_des ul {
+            list-style: disc;
+            -webkit-padding-start: 20px;
+        }
+
+        .pro-exp .pro-exp_list .exp-list_content ol, .pro-exp .pro-exp_list .exp-project_des ol {
+            list-style-type: decimal;
+            -webkit-padding-start: 20px
+        }
+
+        /***** 项目经历 end ****/
+
+        /***** 教育经历 ****/
+
+        .edu-exp .edu-exp_list {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_time {
+            font-size: 14px;
+            color: #666666;
+            position: absolute;
+            right: 0;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top {
+            display: flex;
+            align-items: center;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top img {
+            width: 46px;
+            height: 46px;
+            margin-right: 10px;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 46px;
+            justify-content: space-between;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right p,
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right strong {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .edu-exp .edu-exp_list .exp-list_top .exp-list_right strong {
+            font-weight: 600;
+        }
+
+
+        /***** 教育经历 end ****/
+
+        /***** 社交主页 ****/
+
+        .social-page .social-page_list {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .social-page .social-page_list .social-page_content {
+            display: flex;
+        }
+
+        .social-page .social-page_list .social-page_content img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .social-page .social-page_list .social-page_content p {
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /***** 社交主页 end ****/
+        /***** 图片作品 ****/
+
+        .portfolio-page .portfolio-list {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .portfolio-page .portfolio-list .portfolio-content {
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /***** 图片作品 end ****/
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <!-- 基本信息 -->
+    <div class="basic" id="baseInfo">
+        <div class="basic-photo">
+            <img class="mr_headimg user-avatar" id="userpic"
+                 src="https://www.lgstatic.com//i/image3/M01/5E/29/CgpOIF4K4CyAbg9OAABaksK6Irc533.png" width="120"
+                 height="120" alt="头像"
+            />
+        </div>
+        <div class="basic-info">
+            <div class="basic-name-area">
+                <p class="basic-name female">陈伟城</p>
+                <!--                            <i class="icon-sex icon-sex__male"></i>-->
+            </div>
+            <p>
+                <span class="basic-company">深圳市赛尔克斯科技有限公司</span>
+                <span> / </span>
+                <span class="basic-job">软件技术主管</span>
+            </p>
+            <p class="basic-self">
+                <span class="basic-exp">8年工作经验 / </span>
+                <span class="basic-edu">本科 · 统招 /</span>
+                <span class="basic-age">31岁</span>
+            </p>
+            <p>
+                <span class="basic-tel">
+                    <i class="basic-tel_icon"></i>
+                    <span>13060920102</span>
+                </span>
+                <span class="basic-email">
+                    <i class="basic-email_icon"></i>
+                    <span>wadechen@outlook.com</span>
+                </span>
+            </p>
+        </div>
+    </div>
+    <!-- /基本信息 -->
+    <!-- 教育经历 -->
+    <div class="mr-template edu-exp" id="eduExp">
+        <div class="mr-template_title">
+            <span>教育经历</span>
+        </div>
+        <ol class="edu-exp_group">
+            <li class="edu-exp_list">
+                <p class="exp-list_time">2012.09-2017.07</p>
+                <div class="exp-list_top">
+                    <img src="https://www.tongji.edu.cn/images/badge.png"
+                         alt="学校Logo">
+                    <div class="exp-list_right">
+                        <strong>同济大学</strong>
+                        <p>本科 . 统招 / 软件工程</p>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /教育经历 -->
+    <!-- 自我描述 -->
+    <div class="mr-template per" id="perAbility">
+        <div class="mr-template_title">
+            <span>个人优势</span>
+        </div>
+        <div class="tagboard integrative-tag">
+            <div class="integrative-tag_content">
+                <span class="tagboard-tag">管理</span>
+                <span class="tagboard-tag">技术</span>
+                <span class="tagboard-tag">学习</span>
+                <span class="tagboard-tag">英语</span>
+                <span class="tagboard-tag">日语</span>
+            </div>
+        </div>
+        <div class="per-self_content">
+            <div class="per-self_des">
+                <p></p>
+                <ul>
+                    <li>具备扎实团队管理能力，推崇技术评审与知识共享，提升团队整体技术水平</li>
+                    <li>具备技术战略与架构设计能力，制定并实施技术发展规划，主导关键技术选型与架构设计</li>
+                    <li>重大项目保障，核心技术决策</li>
+                    <li>标准化研发流程，推动CI/CD、自动化测试、监控告警等DevOps体系建设</li>
+                    <li>
+                        技术能力矩阵
+                        <ul>
+                            <li>Web后端与分布式技术：Java、Spring Boot、Spring Cloud Alibaba、Redis、ES、MyBatis、JVM、Nacos
+                            </li>
+                            <li>Web前端技术：Node.js、Vue、ElementUI、TypeScript</li>
+                            <li>
+                                其他技术：Python、Docker、Linux、Nginx、MongoDB、Ollama、OpenWebUI、DataX、Seata、Sentinel、TeamCity、Gogs、Git、SVN、Electron、Netty
+                            </li>
+                        </ul>
+                    </li>
+                    <li>数据结构与算法方面基础扎实，熟练掌握且不限于：图论算法、搜索算法、动态规划、数论与组合数学</li>
+                    <li>了解世界各国经济政治文化历史，扎实的英语口语能力，常规日语口语能力，可对接国际化客户</li>
+                    <li>全国青少年信息学奥林匹克联赛NOIP一等奖，保送同济大学</li>
+                </ul>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <!-- /自我描述 -->
+
+
+    <!-- 工作经历 -->
+    <div class="mr-template work-exp" id="workExp">
+        <div class="mr-template_title">
+            <span>工作经历</span>
+        </div>
+        <ol class="work-exp_group">
+            <li class="work-exp_list">
+                <p class="exp-list_time">2020.04-2025.04</p>
+                <div class="exp-list_top">
+                    <img src="https://img.bosszhipin.com/beijin/upload/com/workfeel/20230927/7bf6f160950405e96ab5c93f367bc5a763ec68528890477305ac692ccdb90fac5379fb46ced6979a.png.webp"
+                         alt="公司Logo">
+                    <div class="exp-list_right">
+                        <strong class="exp-list_title">
+                            <span>深圳市赛尔克斯科技有限公司</span>
+                            ／
+                            <span>软件技术部</span>
+                        </strong>
+                        <p>软件技术主管</p>
+                    </div>
+                </div>
+                <div class="tagboard">
+                    <span class="tagboard-tag">后端</span>
+                    <span class="tagboard-tag">Java</span>
+                    <span class="tagboard-tag">Python</span>
+                </div>
+                <div class="exp-list_content">
+                    <p></p>
+                    <ul>
+                        <li>岗位：软件技术主管</li>
+                        <li>产品体系：赛尔克斯基础平台、赛尔克斯基础平台Cloud、赛尔克斯授权平台、塞尔物联云平台软件等核心产品
+                        </li>
+                        <li>
+                            主导项目：海南省建设工程安全生产责任保险管理信息系统、儋州市档案馆管理系统、法雷奥供应商管理系统、海中特长生报名系统、禄华MIS系统、松下原价系统、电子科大软包线系统、清华大学软包线系统、苞谷物联系统、安责险查一查小程序、招标代理机构系统等多个省级、市级以及企业级信息化平台项目。
+                        </li>
+                        <li>主要职责：
+                            <ul>
+                                <li>负责公司各类软件产品与系统的整体技术管理与规划落地；</li>
+                                <li>主导关键项目的需求分析、技术方案设计与交付过程监督，确保项目进度、质量与成本可控；</li>
+                                <li>
+                                    组织并推进团队协同开发流程建设，推动研发流程标准化，包括版本管理、CI/CD、自动化测试、监控与预警体系建设等；
+                                </li>
+                                <li>参与公司技术路线制定与核心技术选型工作，推动技术能力体系化发展；</li>
+                                <li>建设技术团队，提升团队技术深度与协作能力，同时参与公司整体管理与战略决策</li>
+                            </ul>
+                        </li>
+                        <li>
+                            个人收获：在赛尔克斯工作的这段时间，是我技术成长与管理能力跃升的重要阶段。通过深度参与多个政企级项目的研发与交付过程，我不仅提升了对复杂系统架构的理解与设计能力，也在实践中锤炼了项目统筹与跨团队协作的能力。作为技术主管，我逐步建立起一套以评审驱动的研发机制与知识共享文化，有效提升了团队整体技术水平。与此同时，也实现了适合公司业务形态的DevOps体系的规划与实施，在持续集成、自动化测试、系统监控等方面积累了扎实经验。在团队管理上，我更加注重人的成长与技术氛围的建设，逐步从技术骨干成长为具备全局视角的技术管理者。赛尔克斯给予了我广阔的施展空间与宝贵的实践平台，为我后续的职业发展奠定了坚实的基础。
+                        </li>
+                    </ul>
+                    <p><br/></p>
+                </div>
+            </li>
+            <li class="work-exp_list">
+                <p class="exp-list_time">2017.08-2020.03</p>
+                <div class="exp-list_top">
+                    <img src="https://www.basenet.co.jp/wordpress/wp-content/themes/basenet/include/images/logo.svg"
+                         alt="公司Logo">
+                    <div class="exp-list_right">
+                        <strong class="exp-list_title">
+                            <span>贝斯株式会社</span>
+                            ／
+                            <span>CSP开发组</span>
+                        </strong>
+                        <p>后端开发工程师</p>
+                    </div>
+                </div>
+                <div class="tagboard">
+                    <span class="tagboard-tag">后端</span>
+                    <span class="tagboard-tag">Java</span>
+                    <span class="tagboard-tag">Python</span>
+                </div>
+                <div class="exp-list_content">
+                    <p></p>
+                    <ul>
+                        <li>岗位：Java后端工程师</li>
+                        <li>项目：Central Security League</li>
+                        <li>
+                            具备警备功能的中心安全系统，支持人脸识别、火灾识别、水灾识别等功能，应用于日本各大车站，是东京奥运会筹备项目之一。
+                        </li>
+                        <li>项目链接：<a>https://www.we-are-csp.co.jp/recruit/index.php</a></li>
+                        <li>项目分组：后端API（Java）、后端API（C++）、人脸识别（Python）、客户端（VB）</li>
+                        <li>所属组别：后端API（Java）</li>
+                        <li>使用框架：Spring</li>
+                        <li>主要职责: 负责客户端接口模块和客户端 MASTER 接口模块的开发（两个独立服务），为前端提供 API
+                            接口支持。项目后期担任三人小组的负责人，负责对接测试组，跟进未通过测试的内容，制定 Bug
+                            修复方案并分配任务给组员。
+                        </li>
+                        <li>个人收获：在技术、管理和语言能力方面均有显著提升。
+                            <ul>
+                                <li>技术方面：熟练掌握 Java Spring、Redis、Linux Shell 命令等。</li>
+                                <li>
+                                    管理方面：三人小组的管理经历帮助我在任务分配与团队协作上更加得心应手，也提升了抗压能力。
+                                </li>
+                                <li>语言方面：由于项目组成员来自不同国家，英语和日语的口语能力也得到了显著提高。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><br/></p>
+                </div>
+            </li>
+            <li class="work-exp_list">
+                <p class="exp-list_time">2016.06-2017.01</p>
+                <div class="exp-list_top">
+                    <img src="https://www.lgstatic.com/i/image3/M00/4B/26/Cgq2xlrYMsiAeCazAAE3vKjeD4Q528.png"
+                         alt="公司Logo">
+                    <div class="exp-list_right">
+                        <strong class="exp-list_title">
+                            <span>百姓网</span>
+                            ／
+                            <span>百姓网主站部门</span>
+                        </strong>
+                        <p>WEB前端</p>
+                    </div>
+                </div>
+                <div class="tagboard">
+                    <span class="tagboard-tag">Node.js</span>
+                    <span class="tagboard-tag">Jade</span>
+                    <span class="tagboard-tag">Stylus</span>
+                    <span class="tagboard-tag">PHP</span>
+                </div>
+                <div class="exp-list_content">
+                    <ul>
+                        <li>岗位：Web前端工程师</li>
+                        <li>项目：百姓网主站</li>
+                        <li>项目链接：<a>https://www.baixing.com</a></li>
+                        <li>
+                            项目简介：百姓网是国内知名的分类信息平台，面向用户提供涵盖生活服务、招聘求职、房屋租售、二手车交易、二手物品买卖、教育培训、同城交友等本地生活服务解决方案。
+                        </li>
+                        <li>项目分组：前端开发、后端开发、移动开发（iOS/Android）</li>
+                        <li>所属组别：前端开发（Node.js、PHP）</li>
+                        <li>使用框架：Laravel</li>
+                        <li>使用技术：PHP、Node.js、Jade、Stylus、Grunt</li>
+                        <li>主要职责：负责前端页面的开发与维护，包括页面样式调整、节日专题页上线、参与代码 Review
+                            等日常工作。
+                        </li>
+                        <li>个人收获：百姓网是一家技术氛围浓厚的互联网公司，面试过程重点考察了算法和数据结构，进入团队后也持续在提升技术深度与开发规范上精益求精。在项目中，我提升了快速学习新技术的能力，熟悉了
+                            Node.js、前端模板语言（Jade）、Git 使用规范和项目文档撰写标准，并深入理解了完整的前端开发流程，打下了坚实的技术基础。
+                        </li>
+                    </ul>
+                    <p><br/></p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /工作经历 -->
+
+    <!-- 项目经历 -->
+    <!--    <div class="mr-template pro-exp" id="proExp">-->
+    <!--        <div class="mr-template_title">-->
+    <!--            <span>项目经历</span>-->
+    <!--        </div>-->
+    <!--        <ol class="pro-exp_group">-->
+    <!--            <li class="pro-exp_list">-->
+    <!--                <p class="exp-list_title">-->
+    <!--                    <span class="exp-project_name">Central Security League</span>-->
+    <!--                    <span class="exp-project_company">（<span>贝斯株式会社</span>）</span>-->
+    <!--                </p>-->
+    <!--                <p class="exp-list_time">2017.08-2020.03</p>-->
+    <!--                <div class="exp-project_des"><p>-->
+    <!--                    具备警备功能的中心安全系统，具备人脸识别、火灾识别、水灾识别等等。运用于日本各个车站，属于东京奥运会筹备项目之一。</p>-->
+    <!--                </div>-->
+    <!--                <div class="exp-list_content">-->
+    <!--                    <p>-->
+    <!--                        我负责的是客户端接口模块和客户端MASTER接口模块（分开的客户端接口模块和客户端MASTER接口模块（分开的两个服务）的开发，为前端提供的API接口实现。项目最后半年管理一个组员为三人的小组，负责对接测试组的未通过测试，决策bug修正方案并下发任务给组员。</p>-->
+    <!--                </div>-->
+    <!--                <p class="exp-project_url">项目链接: https://www.we-are-csp.co.jp/recruit/index.php</p>-->
+    <!--            </li>-->
+    <!--            <li class="pro-exp_list">-->
+    <!--                <p class="exp-list_title">-->
+    <!--                    <span class="exp-project_name">百姓网</span>-->
+    <!--                    <span class="exp-project_company">（<span>百姓网</span>）</span>-->
+    <!--                </p>-->
+    <!--                <p class="exp-list_time">2016.06-2017.01</p>-->
+    <!--                <div class="exp-project_des"><p>百姓网分类信息网站，为用户提供涵盖生活服务、招聘求职、房屋租售、二手车买卖、二手交易、教育培训、同城交友等本地生活解决方案。&nbsp;&nbsp;<br/>-->
+    <!--                </p></div>-->
+    <!--                <div class="exp-list_content">-->
+    <!--                    <p>-->
+    <!--                        我在百姓网公司的主站部门的前端组，负责百姓网的迭代开发的编写和更新前端页面，包括页面式样变更、节日页面上新、参与代码Review等等。</p>-->
+    <!--                </div>-->
+    <!--                <p class="exp-project_url">项目链接: http://www.baixing.com</p>-->
+    <!--            </li>-->
+    <!--        </ol>-->
+    <!--    </div>-->
+    <!-- /项目经历 -->
+    <!-- 社交主页 -->
+    <div class="mr-template social-page" id="socialPage">
+        <div class="mr-template_title">
+            <span>社交主页</span>
+        </div>
+        <ol class="social-page_group">
+            <li class="social-page_list">
+                <div class="social-page_content">
+                    <img src="./github.svg" alt="">
+                    <p>https://wadeee.github.io</p>
+                </div>
+            </li>
+            <li class="social-page_list">
+                <div class="social-page_content">
+                    <img src="./github.svg" alt="">
+                    <p>https://github.com/wadeee</p>
+                </div>
+            </li>
+            <li class="social-page_list">
+                <div class="social-page_content">
+                    <img src="https://gitee.com/assets/favicon_message.ico?1581387642851" alt="">
+                    <p>https://gitee.com/wadde</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <!-- /社交主页 -->
+
+    <!-- 图片作品 -->
+    <!-- /图片作品 -->
+</div>
+<script type="text/javascript" crossorigin="anonymous" src="https://www.lagou.com/upload/oss.js?v=1010"></script>
+</body>
+
+</html>
