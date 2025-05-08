@@ -126,10 +126,9 @@ nohup ./shell.sh & ## run in background, and the output will be saved in nohup.o
 nohup ./shell.sh > /dev/null 2>&1 & ## all output will not be saved
 
 ## proxy set
-export all_proxy="socks5://localhost:7890"
+export all_proxy="socks5h://localhost:7890"
 export http_proxy="http://localhost:7890"
 export https_proxy="http://localhost:7890"
-export socks_proxy="socks5://localhost:7890"
 export ftp_proxy="http://localhost:7890"
 ## set in ~/.zshrc or ~/.bashrc or ~/.bash_profile
 ## echo $all_proxy
@@ -137,7 +136,6 @@ export ftp_proxy="http://localhost:7890"
 unset all_proxy
 unset http_proxy
 unset https_proxy
-unset socks_proxy
 unset ftp_proxy
 
 ## systemd
