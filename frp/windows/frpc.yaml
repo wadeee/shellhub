@@ -3,7 +3,7 @@ serverPort: 7000
 auth:
   token: kb782231
 proxies:
-  - name: rdp
+  - name: rdp-home
     type: tcp
     localPort: 3389
-    remotePort: 13389
+    remotePort: 23389
