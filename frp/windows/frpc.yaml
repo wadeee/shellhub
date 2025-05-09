@@ -1,0 +1,9 @@
+serverAddr: 120.78.158.156
+serverPort: 7000
+auth:
+  token: kb782231
+proxies:
+  - name: rdp
+    type: tcp
+    localPort: 3389
+    remotePort: 13389

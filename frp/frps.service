@@ -1,0 +1,8 @@
+[Unit]
+Description=frp
+[Service]
+Type=simple
+WorkingDirectory=/root/frp_0.62.1_linux_amd64/
+ExecStart=/root/frp_0.62.1_linux_amd64/frps -c frps.yaml
+[Install]
+WantedBy=multi-user.target
