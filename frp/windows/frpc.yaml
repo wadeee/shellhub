@@ -6,4 +6,4 @@ proxies:
   - name: rdp-home
     type: tcp
     localPort: 3389
-    remotePort: 23389
+    remotePort: 13389
