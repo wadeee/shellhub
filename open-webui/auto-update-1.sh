@@ -36,3 +36,4 @@ scp -P "$remote_port" -i $ssh_key ./config/.webui_secret_key "$remote_user"@"$re
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable open-webui"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart open-webui"
+# systemctl status open-webui
