@@ -6,4 +6,9 @@ proxies:
   - name: rdp-home
     type: tcp
     localPort: 3389
-    remotePort: 13389
+    remotePort: 23389
+  - name: xiaomi-auto
+    type: tcp
+    localIp: 192.168.31.1
+    localPort: 8086
+    remotePort: 8086
