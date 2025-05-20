@@ -24,4 +24,7 @@ while getopts "h:p:u:" opt; do
 done
 
 ## add ok.txt
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "touch /opt/zbox/app/htdocs/ok.txt"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /opt/zbox/app/htdocs/ok.txt"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "touch /opt/zbox/app/htdocs/ok.txt"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /opt/zbox/app/zentao/www/data/ok.txt"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "touch /opt/zbox/app/zentao/www/data/ok.txt"

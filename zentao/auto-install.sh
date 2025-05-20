@@ -30,6 +30,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --
 
 ## upload zentao
 scp -P "$remote_port" -i $ssh_key ./ZenTaoPMS-21.6.1-zbox_amd64.tar.gz "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /opt/zbox"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar xvzf ZenTaoPMS-21.6.1-zbox_amd64.tar.gz -C /opt"
 
 ## service
