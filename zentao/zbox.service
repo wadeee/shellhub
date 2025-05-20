@@ -1,0 +1,8 @@
+[Unit]
+Description=zbox
+[Service]
+Type=forking
+ExecStart=/bin/bash /opt/zbox/zbox start
+ExecStop=/bin/bash /opt/zbox/zbox stop
+[Install]
+WantedBy=multi-user.target
