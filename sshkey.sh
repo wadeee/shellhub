@@ -1,5 +1,6 @@
 #!/bin/sh
 
+## git use ssh key
 ssh-keygen -t rsa -C "youremail.com"
 
 ## generate keygen for OpenSSH_8.0
