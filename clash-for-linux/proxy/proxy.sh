@@ -16,4 +16,4 @@ function proxy_off(){
 	echo -e "[×] 已关闭代理"
 }
 
-proxy_on
+#proxy_on
