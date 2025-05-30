@@ -5,7 +5,7 @@ diskutil list
 file /Users/wade/Desktop/zh-cn_windows_11_business_editions_version_24h2_updated_may_2025_x64_dvd_b388d91e.iso
 diskutil eraseDisk FAT32 "WINDOWS" /dev/disk4
 hdiutil mount /Users/wade/Desktop/zh-cn_windows_11_business_editions_version_24h2_updated_may_2025_x64_dvd_b388d91e.iso
-cp -R /Volumes/ISOVolume/* /Volumes/WINDOWS/
+cp -R /Volumes/CPBA_X64FRE_ZH-CN_DV9/* /Volumes/WINDOWS/
 
 ## flash iso to disk
 diskutil list
