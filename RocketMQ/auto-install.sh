@@ -29,7 +29,8 @@ scp -P "$remote_port" -i $ssh_key ./selinux/config "$remote_user"@"$remote_host"
 
 ## install ##
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://archive.apache.org/dist/rocketmq/5.2.0/rocketmq-all-5.2.0-bin-release.zip"
+#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "wget https://archive.apache.org/dist/rocketmq/5.2.0/rocketmq-all-5.2.0-bin-release.zip"
+scp -P "$remote_port" -i $ssh_key ./rocketmq-all-5.2.0-bin-release.zip "$remote_user"@"$remote_host":/root/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf rocketmq-all-5.2.0-bin-release"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip rocketmq-all-5.2.0-bin-release.zip"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "echo 'export ROCKETMQ_HOME=/root/rocketmq-all-5.2.0-bin-release' >> ~/.bashrc"
