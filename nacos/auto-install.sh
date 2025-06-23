@@ -23,6 +23,9 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## install java-1.8 ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
+
 ## install nacos ##
 ## install nacos online ##
 #ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd /root && wget https://github.com/alibaba/nacos/releases/download/2.2.0/nacos-server-2.2.0.zip && rm -rf /root/nacos && unzip -o nacos-server-2.2.0.zip"

@@ -4,6 +4,7 @@ After=network.target
 [Service]
 TimeoutStartSec=0
 Restart=always
+RestartSec=10s
 ExecStart=/bin/java -Xms512m -Xmx512m -Xmn256m -Dnacos.standalone=true -Dnacos.member.list= -Xloggc:/var/log/nacos/nacos_gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M -Dloader.path=/root/nacos/plugins,/root/nacos/plugins/health,/root/nacos/plugins/cmdb,/root/nacos/plugins/selector -Dnacos.home=/root/nacos -jar /root/nacos/target/nacos-server.jar --spring.config.additional-location=file:/root/nacos/conf/ --logging.config=/root/nacos/conf/nacos-logback.xml --server.max-http-header-size=524288 nacos.nacos
 [Install]
 WantedBy=multi-user.target
