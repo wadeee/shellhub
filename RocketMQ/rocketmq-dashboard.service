@@ -1,0 +1,11 @@
+[Unit]
+Description=rocketmq-dashboard service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStart=/bin/java -jar /root/jars/rocketmq-dashboard-2.0.1-SNAPSHOT.jar
+
+[Install]
+WantedBy=multi-user.target
