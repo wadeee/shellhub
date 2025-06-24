@@ -8,4 +8,4 @@
 
 *.tok
 *.run
-/RocketMQ/rocketmq-dashboard/
+RocketMQ/rocketmq-dashboard/
