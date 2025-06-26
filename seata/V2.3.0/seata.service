@@ -1,0 +1,10 @@
+[Unit]
+Description=seata
+After=network.target
+[Service]
+Type=forking
+WorkingDirectory=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/bin/
+ExecStartPre=/bin/sleep 70
+ExecStart=/bin/sh /root/seata/apache-seata-2.3.0-incubating-bin/seata-server/bin/seata-server.sh
+[Install]
+WantedBy=multi-user.target
