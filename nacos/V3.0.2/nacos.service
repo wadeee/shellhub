@@ -2,8 +2,9 @@
 Description=nacos
 After=network.target
 [Service]
-Type=forking
-ExecStart=/bin/sh /root/nacos/bin/startup.sh -m standalone
-ExecStop=/bin/sh /root/nacos/bin/shutdown.sh
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java -Xms512m -Xmx512m -Xmn256m -Dnacos.standalone=true -Dnacos.member.list= -Xlog:gc*:file=/root/nacos/logs/nacos_gc.log:time,tags:filecount=10,filesize=100m -Dnacos.deployment.type=merged -Dloader.path=/root/nacos/plugins,/root/nacos/plugins/health,/root/nacos/plugins/cmdb,/root/nacos/plugins/selector -Dnacos.home=/root/nacos -jar /root/nacos/target/nacos-server.jar  --spring.config.additional-location=file:/root/nacos/conf/ --logging.config=/root/nacos/conf/nacos-logback.xml --server.max-http-request-header-size=524288
 [Install]
 WantedBy=multi-user.target
