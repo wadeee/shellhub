@@ -78,7 +78,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl resta
 
 ## download ollama
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "source /etc/profile.d/proxy.sh && proxy_on && curl -fsSL https://ollama.com/install.sh | sh"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ollama pull deepseek-r1:1.5b"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "ollama pull qwen2.5:14b"
 
 ## reboot
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "reboot"
