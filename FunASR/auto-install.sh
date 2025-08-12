@@ -24,7 +24,7 @@ while getopts "h:p:u:" opt; do
 done
 
 ## add proxy
-#scp -P "$remote_port" -i $ssh_key ./config/proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
+scp -P "$remote_port" -i $ssh_key ./config/proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
 
 ## install conda
 scp -P "$remote_port" -i $ssh_key ./Anaconda3-2025.06-1-Linux-x86_64.sh "$remote_user"@"$remote_host":/root/
@@ -41,6 +41,7 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "source /root/an
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "source /root/anaconda3/etc/profile.d/conda.sh && conda activate funasr && source /etc/profile.d/proxy.sh && proxy_on && pip install -U funasr"
 
 ## upload workspace
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install zip -y"
 scp -P "$remote_port" -i $ssh_key ./workspace.zip "$remote_user"@"$remote_host":/root/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip /root/workspace.zip -d /workspace"
 
