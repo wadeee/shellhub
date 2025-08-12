@@ -1,0 +1,9 @@
+[Unit]
+Description=funasr
+[Service]
+Type=forking
+WorkingDirectory=/workspace/FunASR/runtime/
+ExecStart=/bin/bash -c 'source /root/anaconda3/etc/profile.d/conda.sh && conda activate funasr && /bin/bash run_server_2pass.sh --download-model-dir /workspace/models --vad-dir damo/speech_fsmn_vad_zh-cn-16k-common-onnx --model-dir damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-onnx  --online-model-dir damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online-onnx  --punc-dir damo/punc_ct-transformer_zh-cn-common-vad_realtime-vocab272727-onnx --itn-dir thuduj12/fst_itn_zh --hotword /workspace/models/hotwords.txt'
+ExecStop=/bin/kill `ps -ef | grep funasr-wss-server-2pass | grep -v "grep" | awk '{print $2}'`
+[Install]
+WantedBy=multi-user.target
