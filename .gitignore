@@ -9,3 +9,5 @@
 *.tok
 *.run
 RocketMQ/rocketmq-dashboard/
+
+*.deb
