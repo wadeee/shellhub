@@ -1,10 +1,10 @@
 [Unit]
 Description=seata
-After=network.target
+After=nacos.service
 [Service]
-Type=forking
-WorkingDirectory=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/bin/
-ExecStartPre=/bin/sleep 70
-ExecStart=/bin/sh /root/seata/apache-seata-2.3.0-incubating-bin/seata-server/bin/seata-server.sh
+TimeoutStartSec=0
+Restart=always
+RestartSec=10s
+ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java  -Dlog.home=/logs/seata -server -Dloader.path=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/lib -Xmx2048m -Xms2048m -Xss640k -XX:SurvivorRatio=10 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:MaxDirectMemorySize=1024m -XX:-OmitStackTraceInFastThrow -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/seata/java_heapdump.hprof -XX:+DisableExplicitGC -Xlog:gc*:file=/logs/seata/seata_gc.log:time,tags:filecount=10,filesize=10M -Dio.netty.leakDetectionLevel=advanced -Dapp.name=seata-server -Dapp.home=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server -Dbasedir=/root/seata/pache-seata-2.3.0-incubating-bin/seata-server  -Dspring.config.additional-location=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/conf/ -Dspring.config.location=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/conf/application.yml -Dlogging.config=/root/seata/apache-seata-2.3.0-incubating-bin/seata-server/conf/logback-spring.xml -Dproduction.deploy.output=true -jar /root/seata/apache-seata-2.3.0-incubating-bin/seata-server/target/seata-server.jar
 [Install]
 WantedBy=multi-user.target
