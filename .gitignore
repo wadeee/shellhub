@@ -5,9 +5,13 @@
 *.rar
 *.jar
 *.tar.gz
+*.tar.xz
+*.tgz
 
 *.tok
 *.run
 RocketMQ/rocketmq-dashboard/
 
 *.deb
+
+Anaconda3*.sh
