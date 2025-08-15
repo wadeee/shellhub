@@ -26,4 +26,4 @@ done
 ## create database
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword -e \"drop schema seata;\""
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword -e \"create schema seata;\""
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword -Dseata < /root/seata/apache-seata-2.3.0-incubating-bin/seata-server/script/server/db/mysql.sql"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mysql -uroot -ppassword -Dseata < /root/seata/script/server/db/mysql.sql"

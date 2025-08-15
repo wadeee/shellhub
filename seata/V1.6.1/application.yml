@@ -50,7 +50,7 @@ seata:
       datasource: druid
       db-type: mysql
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/cellx_seata?rewriteBatchedStatements=true
+      url: jdbc:mysql://localhost:3306/seata?rewriteBatchedStatements=true
       user: root
       password: password
       min-conn: 5

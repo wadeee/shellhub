@@ -23,9 +23,10 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+## install java-1.8 ##
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y java-1.8.0-openjdk-devel.x86_64"
+
 ## install seata ##
-## install seata online ##
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "cd /root && wget https://github.com/seata/seata/releases/download/v1.6.1/seata-server-1.6.1.zip && rm -rf /root/seata && unzip -o seata-server-1.6.1.zip"
 ## install seata local ##
 scp -P "$remote_port" -i $ssh_key ./seata-server-1.6.1.zip "$remote_user"@"$remote_host":/root/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /root/seata && cd /root && unzip -o seata-server-1.6.1.zip"
