@@ -46,7 +46,7 @@ scp -P "$remote_port" -i $ssh_key ./workspace.zip "$remote_user"@"$remote_host":
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip /root/workspace.zip -d /workspace"
 
 ## upload service
-scp -P "$remote_port" -i $ssh_key ./funasr.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
+scp -P "$remote_port" -i $ssh_key ./config/funasr.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemon-reload"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable funasr"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart funasr"
