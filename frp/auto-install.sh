@@ -33,9 +33,9 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 
 ## install frp
-scp -P "$remote_port" -i $ssh_key ./frp_0.62.1_linux_amd64.tar.gz "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -zxvf frp_0.62.1_linux_amd64.tar.gz"
-scp -P "$remote_port" -i $ssh_key ./frps.yaml "$remote_user"@"$remote_host":/root/frp_0.62.1_linux_amd64/
+scp -P "$remote_port" -i $ssh_key ./frp_0.65.0_linux_amd64.tar.gz "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -zxvf frp_0.65.0_linux_amd64.tar.gz"
+scp -P "$remote_port" -i $ssh_key ./frps.yaml "$remote_user"@"$remote_host":/root/frp_0.65.0_linux_amd64/
 scp -P "$remote_port" -i $ssh_key ./frps.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 
 ## frps restart ##
