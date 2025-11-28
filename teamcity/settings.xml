@@ -111,14 +111,9 @@ under the License.
    |-->
   <servers>
     <server>
-      <id>cellx-base</id>
+      <id>sesintec-maven</id>
       <username>admin</username>
-      <password>kb782231</password>
-    </server>
-    <server>
-      <id>cellx-base-cloud</id>
-      <username>admin</username>
-      <password>kb782231</password>
+      <password>y4li5lOT</password>
     </server>
     <!-- server
      | Specifies the authentication information to use when connecting to a particular server, identified by
@@ -167,6 +162,7 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
+    <!--
     <mirror>
       <id>maven-default-http-blocker</id>
       <mirrorOf>external:http:*</mirrorOf>
@@ -174,6 +170,7 @@ under the License.
       <url>http://0.0.0.0/</url>
       <blocked>true</blocked>
     </mirror>
+     -->
   </mirrors>
 
   <!-- profiles
