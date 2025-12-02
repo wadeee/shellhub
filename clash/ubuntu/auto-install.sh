@@ -24,32 +24,11 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
-## use when need the proxy first
-## add proxy temp
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/profile.d/proxy.sh"
-#scp -P "$remote_port" -i $ssh_key ./proxy-temp.sh "$remote_user"@"$remote_host":/etc/profile.d/
-
-## update selinux config ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setenforce permissive"
-scp -P "$remote_port" -i $ssh_key ./config/selinux/config "$remote_user"@"$remote_host":/etc/selinux/
-
 ## install nginx
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "dnf install -y nginx"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable nginx"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl start nginx"
-scp -P "$remote_port" -i $ssh_key ./config/nginx/nginx.conf "$remote_user"@"$remote_host":/etc/nginx/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "apt install -y nginx"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/nginx/sites-enabled/default"
 scp -P "$remote_port" -i $ssh_key ./config/nginx/clash.nginx.http.conf "$remote_user"@"$remote_host":/etc/nginx/conf.d/
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart nginx"
-
-## firewall ##
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "setsebool -P httpd_can_network_connect 1"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=80/tcp --zone=public --permanent"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 80"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=7890/tcp --zone=public --permanent"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 7890"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --add-port=7891/tcp --zone=public --permanent"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "semanage port -a -t http_port_t -p tcp 7891"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "firewall-cmd --reload"
 
 ## install clash
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /root/clash/clash-linux-amd64"
@@ -66,13 +45,14 @@ ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl daemo
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl enable clash"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart clash"
 
-## install
+## install clash board ui
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /root/zips"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /usr/share/clash-board-ui/"
 ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mkdir -p /usr/share/clash-board-ui/"
-scp -P "$remote_port" -i $ssh_key ./clash-board-ui.zip "$remote_user"@"$remote_host":/root/zips/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "unzip /root/zips/clash-board-ui.zip -d /usr/share/clash-board-ui"
+scp -P "$remote_port" -i $ssh_key ./clash-board-ui.tar.xz "$remote_user"@"$remote_host":/root/zips/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -xJf /root/zips/clash-board-ui.tar.xz -C /usr/share/clash-board-ui"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "mv /usr/share/clash-board-ui/public/* /usr/share/clash-board-ui/"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -rf /usr/share/clash-board-ui/public"
 
 ## remove proxy temp
-#ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/profile.d/proxy-temp.sh"
-#scp -P "$remote_port" -i $ssh_key ./proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
+scp -P "$remote_port" -i $ssh_key ./proxy.sh "$remote_user"@"$remote_host":/etc/profile.d/
