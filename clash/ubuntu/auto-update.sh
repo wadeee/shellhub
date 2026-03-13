@@ -4,7 +4,7 @@ remote_host=
 remote_user="root"
 remote_port="22"
 ssh_key=~/.ssh/id_rsa
-clash_subscribe="http://172.105.209.249:8570/link/OnazBn0SUlTajZ4z?clash=1"
+clash_subscribe="http://47.107.66.153:65533/api/v1/12/25?token=1a8716f6dfe0a992e53fb561f3197e38"
 
 showHelp() {
   echo "Usage: sh ./inst.sh [OPTIONS]"
