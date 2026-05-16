@@ -1,8 +1,14 @@
 [Unit]
 Description=frpc
+After=network-online.target
+Wants=network-online.target
+
 [Service]
 Type=simple
 WorkingDirectory=/root/frp_0.65.0_linux_amd64/
 ExecStart=/root/frp_0.65.0_linux_amd64/frpc -c frpc.yaml
+Restart=on-failure
+RestartSec=5s
+
 [Install]
 WantedBy=multi-user.target
