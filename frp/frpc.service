@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/root/frp_0.65.0_linux_amd64/
-ExecStart=/root/frp_0.65.0_linux_amd64/frpc -c frpc.yaml
+WorkingDirectory=/root/frp_0.68.1_linux_amd64/
+ExecStart=/root/frp_0.68.1_linux_amd64/frpc -c frpc.yaml
 Restart=on-failure
 RestartSec=5s
 

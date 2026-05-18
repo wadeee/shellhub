@@ -24,9 +24,9 @@ while getopts "h:p:u:" opt; do
 done
 
 ## install frp
-scp -P "$remote_port" -i $ssh_key ./frp_0.65.0_linux_amd64.tar.gz "$remote_user"@"$remote_host":/root/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -zxvf frp_0.65.0_linux_amd64.tar.gz"
-scp -P "$remote_port" -i $ssh_key ./frpc.yaml "$remote_user"@"$remote_host":/root/frp_0.65.0_linux_amd64/
+scp -P "$remote_port" -i $ssh_key ./frp_0.68.1_linux_amd64.tar.gz "$remote_user"@"$remote_host":/root/
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "tar -zxvf frp_0.68.1_linux_amd64.tar.gz"
+scp -P "$remote_port" -i $ssh_key ./frpc.yaml "$remote_user"@"$remote_host":/root/frp_0.68.1_linux_amd64/
 scp -P "$remote_port" -i $ssh_key ./frpc.service "$remote_user"@"$remote_host":/usr/lib/systemd/system/
 
 ## frpc restart ##
