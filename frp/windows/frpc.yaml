@@ -3,12 +3,7 @@ serverPort: 7000
 auth:
   token: kb782231
 proxies:
-  - name: rdp-home
+  - name: sesin
     type: tcp
     localPort: 3389
-    remotePort: 23389
-  - name: xiaomi-auto
-    type: tcp
-    localIp: 192.168.31.1
-    localPort: 8086
-    remotePort: 8086
+    remotePort: 22289
