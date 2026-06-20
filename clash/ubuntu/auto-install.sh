@@ -71,12 +71,8 @@ run "\
   && rm -rf /usr/share/clash-board-ui/ \
   && mkdir -p /usr/share/clash-board-ui/ \
 "
-put ./clash-board-ui.tar.xz /root/zips/
-run "\
-  tar -xJf /root/zips/clash-board-ui.tar.xz -C /usr/share/clash-board-ui \
-  && mv /usr/share/clash-board-ui/public/* /usr/share/clash-board-ui/ \
-  && rm -rf /usr/share/clash-board-ui/public \
-"
+put ./clash-board-ui.zip /root/zips/
+run "unzip /root/zips/clash-board-ui.zip -d /usr/share/clash-board-ui"
 
 ## set proxy
 put ./proxy.sh /etc/profile.d/
