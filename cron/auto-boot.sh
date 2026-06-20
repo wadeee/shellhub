@@ -25,4 +25,5 @@ done
 
 ## upload and restart crond
 scp -P "$remote_port" -i $ssh_key ./daily-reboot "$remote_user"@"$remote_host":/etc/cron.d/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart crond"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "chmod 644 /etc/cron.d/daily-reboot"
+ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart cron"
