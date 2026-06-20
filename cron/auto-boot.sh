@@ -3,15 +3,15 @@
 remote_host=
 remote_user="root"
 remote_port="22"
-ssh_key=~/.ssh/id_rsa
+ssh_key="${HOME}/.ssh/id_rsa"
 
 showHelp() {
-  echo "Usage: sh ./inst.sh [OPTIONS]"
+  echo "Usage: sh $0 [OPTIONS]"
   echo "Options:"
   echo "  -h <ssh host>"
   echo "  -p <ssh port>"
   echo "  -u <ssh user>"
-  exit;
+  exit
 }
 
 while getopts "h:p:u:" opt; do
@@ -23,7 +23,21 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+[ -z "$remote_host" ] && showHelp
+
+remote_target="$remote_user@$remote_host"
+
+run() {
+  ssh -p "$remote_port" -i "$ssh_key" "$remote_target" "$@"
+}
+
+put() {
+  scp -P "$remote_port" -i "$ssh_key" "$1" "$remote_target":"$2"
+}
+
 ## upload and restart crond
-scp -P "$remote_port" -i $ssh_key ./daily-reboot "$remote_user"@"$remote_host":/etc/cron.d/
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "chmod 644 /etc/cron.d/daily-reboot"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl restart cron"
+put ./daily-reboot /etc/cron.d/
+run "\
+  chmod 644 /etc/cron.d/daily-reboot \
+  && systemctl restart cron \
+"
