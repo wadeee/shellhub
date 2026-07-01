@@ -4,7 +4,6 @@ remote_host=
 remote_user="root"
 remote_port="22"
 ssh_key="${HOME}/.ssh/id_rsa"
-clash_subscribe="http://47.107.66.153:65533/api/v1/12/25?token=1a8716f6dfe0a992e53fb561f3197e38"
 
 showHelp() {
   echo "Usage: sh $0 [OPTIONS]"
@@ -32,18 +31,24 @@ run() {
   ssh -p "$remote_port" -i "$ssh_key" "$remote_target" "$@"
 }
 
-put() {
-  scp -P "$remote_port" -i "$ssh_key" "$1" "$remote_target":"$2"
-}
-
-## update clash
+## stop proxy
 run "\
-  curl -o /root/clash/clash_config.yaml $clash_subscribe \
-  && mkdir -p /root/clash/conf \
+  systemctl stop clash \
+  && systemctl disable clash \
+  && rm -rf /usr/lib/systemd/system/clash.service \
+  && systemctl daemon-reload \
+  && rm -f /etc/profile.d/proxy.sh \
+  && rm -rf /root/zips/clash-board-ui.zip \
+  && rm -rf /usr/share/clash-board-ui \
+  && rm -rf /root/clash/
 "
-put ./config.yaml /root/clash/conf/
-put ./Country.mmdb /root/clash/conf/
+
+## stop nginx
 run "\
-  sed -n '/^proxies:/,\$p' /root/clash/clash_config.yaml >> /root/clash/conf/config.yaml \
-  && systemctl restart clash \
+  systemctl stop nginx \
+  && systemctl disable nginx \
+  && apt purge -y 'nginx*' \
+  && sudo apt autoremove -y \
+  && sudo apt autoclean \
+  && sudo rm -rf /etc/nginx /var/log/nginx /var/cache/nginx /usr/share/nginx
 "

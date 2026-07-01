@@ -3,15 +3,15 @@
 remote_host=
 remote_user="root"
 remote_port="22"
-ssh_key=~/.ssh/id_rsa
+ssh_key="${HOME}/.ssh/id_rsa"
 
 showHelp() {
-  echo "Usage: sh ./inst.sh [OPTIONS]"
+  echo "Usage: sh $0 [OPTIONS]"
   echo "Options:"
   echo "  -h <ssh host>"
   echo "  -p <ssh port>"
   echo "  -u <ssh user>"
-  exit;
+  exit
 }
 
 while getopts "h:p:u:" opt; do
@@ -23,7 +23,17 @@ while getopts "h:p:u:" opt; do
   esac
 done
 
+[ -z "$remote_host" ] && showHelp
+
+remote_target="$remote_user@$remote_host"
+
+run() {
+  ssh -p "$remote_port" -i "$ssh_key" "$remote_target" "$@"
+}
+
 ## stop proxy
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "rm -f /etc/profile.d/proxy.sh"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl disable clash"
-ssh -p "$remote_port" -i $ssh_key "$remote_user"@"$remote_host" "systemctl stop clash"
+run "\
+  rm -f /etc/profile.d/proxy.sh \
+  && systemctl disable clash \
+  && systemctl stop clash \
+"

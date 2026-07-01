@@ -3,7 +3,7 @@ serverPort: 7000
 auth:
   token: kb782231
 proxies:
-  - name: sesin
+  - name: home
     type: tcp
     localPort: 3389
-    remotePort: 22289
+    remotePort: 11189
